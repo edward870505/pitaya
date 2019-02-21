@@ -1,0 +1,61 @@
+<!--pages/warehouse/alterout/alterout.wxml-->
+<!--pages/warehouse/alterout/alterout.wxml-->
+<view class='outter'>
+  <view class='top'>
+    <text class='title'>{{warehouse.parent.name}} {{warehouse.name}} 进仓单</text>
+  </view>
+  <view class='center'>
+    <view class='table_head'>
+      <view class='date'>日期</view>
+      <view class='in_out'>出库方式</view>
+      <view class='amount'>数量</view>
+      <view class='unit'>单位</view>
+      <view class='price'>
+        <view>单价(元)</view>
+        <view>单价(VND)</view>
+      </view>
+    </view>
+    <view class='table_body'>
+      <view class='records'>
+        <scroll-view scroll-y>
+          <block wx:for='{{warehouse.inANDoutRecords}}'>
+            <view class='scroll_item out'>
+              <view class='date'>
+                <text></text>
+              </view>
+              <view class='in_out'>
+                <text></text>
+              </view>
+              <view class='amount'>
+                <text></text>
+              </view>
+              <view class='unit'>
+                <text></text>
+              </view>
+              <view class='price'>
+                <text class='RMB'></text>
+                <text class='VND'></text>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+      <view class='ending'>
+        <view class='date'></view>
+        <view class='in_out'>合计</view>
+        <view class='amount'></view>
+        <view class='unit'></view>
+        <view class='price'></view>
+      </view>
+    </view>
+  </view>
+  <view class='bottom'>
+    <view class='add_btn'>
+      <button plain  type='primary' bindtap='onAddBtnTap'>新增</button>
+    </view>
+    <view class='submit_btn'>
+      <button plain>提交</button>
+    </view>
+  </view>
+</view>
+

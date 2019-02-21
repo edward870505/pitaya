@@ -1,0 +1,22 @@
+<!--pages/material/add/add.wxml-->
+<import src='../../../templates/add_item_page/center_container_form/center_container_form.wxml'/>
+
+<view class='outter_container'>
+  <view class='top_container'></view>
+  <!--表单-->
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <form bindsubmit='onAddItemFormSubmit'>
+        <template is='form_section'  wx:for='{{formSections}}' data='{{index:index,name:item.name,range:pickerRange.type,imgSrc:item.imgSrc,text:item.text,placeholder:item.inputPlaceHolder,inputType:item.inputType,unitInput:item.unitInput,unitInputType:item.unitInputType,rangeKey:item.rangeKey,pickerRange:pickerRange,range_key:item.range_key}}'></template>
+      <view class='btnGroup'>
+          <button form-type='submit' plain>提交</button>
+        </view>
+      </form>
+    </scroll-view>
+  </view>
+    <!--表单-->
+  <view class='bottom_center'></view>
+</view>
+
+
+

@@ -1,0 +1,47 @@
+/* pages/warehouse/warehouse.wxss */
+@import '../../templates/operation_page/common_wxss/operation_page.wxss';
+@import '../../templates/operation_page/filter_container_picker/filter_picker.wxss';
+@import '../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxss';
+@import '../../templates/operation_page/center_container_scroll_view/center_container_scroll_view.wxss';
+
+view.center_container view.scrollview_container{
+  margin-left: 0rpx;
+  margin-top: 0rpx;
+  padding-left: 0rpx;
+  height: 90%;
+  width: 98%;
+}
+
+view.center_container view.scrollview_container scroll-view{
+  width: 100%;
+  height: 95%;
+  white-space: nowrap;
+  margin-top: 0rpx;
+}
+
+
+view.scroll_item_center picker.scroll-section{
+  display: inline-flex;
+}
+
+view.scroll_item_center picker.scroll-section view{
+  width: 140rpx;
+  height: 140rpx;
+  border: 1px solid #b6b6b6;
+  border-radius: 15rpx;
+  margin-top: 10rpx;
+  padding-left: 0rpx;
+  margin-right: 15rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+
+
+
+picker.scroll-section image{
+  width: 50rpx;
+  height: 50rpx;
+}

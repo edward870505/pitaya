@@ -1,0 +1,4 @@
+/* pages/transfer/alter/alter.wxss */
+@import '../../../templates/alter_item_page/common.wxss';
+@import '../../../templates/alter_item_page/top_container_title/alter_title.wxss';
+@import '../../../templates/alter_item_page/bottom_container_scroll_view_form/alter_form.wxss';

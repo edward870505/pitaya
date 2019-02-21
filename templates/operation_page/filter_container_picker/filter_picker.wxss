@@ -1,0 +1,23 @@
+/* templates/operation_page/filter_container_picker/filter_picker.wxss */
+view.filter_container picker,
+view.filter_container input{
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.filter_container input{
+  text-align: center;
+  width: 50%;
+}
+
+image.filterImg{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left:10rpx;
+}
+
+.placeholder{
+  color: black;
+}

@@ -1,0 +1,3 @@
+/* pages/exchangerate/add/add.wxss */
+@import '../../../templates/add_item_page/common.wxss';
+@import '../../../templates/add_item_page/center_container_form/center_container_form.wxss';

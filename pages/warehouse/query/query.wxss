@@ -1,0 +1,400 @@
+/* pages/warehouse/query/query.wxss */
+page{
+  display: flex;
+  justify-content: center;
+}
+
+view.outter{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  height: 99%;
+  border: 1px solid #8b8a8a;
+}
+
+view.outter .top{/*一级标题容器*/
+  flex-basis: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px dashed;
+ 
+}
+
+view.outter .top text{/*标题文字样式*/
+  font-weight: 600;
+}
+
+view.outter .center{/*时间信息容器*/
+  flex-basis: 8%;
+  display: flex;
+  border-bottom: 1px dashed;
+}
+
+view.outter .center .left{/*物资筛选输入框外部容器*/
+  flex-basis: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right:1px dashed;
+}
+
+view.outter .center .left view{/*物资筛选输入框内部容器*/
+  height: 70%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid;
+}
+
+view.outter .center .left input{/*物资筛选输入框样式*/
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.placeholder{/*input placeholder文字样式*/
+  color: black;
+}
+
+view.outter .center .right{/*时间范围容器*/
+  flex-basis: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+view.outter .center .right picker{/*时间选择器样式*/
+   border-bottom: 1px solid;
+   font-size: 30rpx;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+view.outter .center .right .begin{/*开始时间容器*/
+  height: 70%;
+  flex-basis: 43%;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+view.outter .center .right text{
+  flex-basis: 5%;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+view.outter .center .right text.to{/*文字'到'样式*/
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+view.outter .center .right .end{/*结束时间容器*/
+  height: 70%;
+  flex-basis: 43%;
+  display: flex;
+  justify-content: center;
+
+}
+
+view.outter .bottom{/*报表主体内容容器*/
+  flex-basis: 80%;
+  display: flex;
+}
+
+view.outter .bottom_total{
+  flex-basis: 5%;
+  background-color:  #dbdbdb;
+  display: flex;
+  border-top:1px solid; 
+}
+
+view.outter .bottom_total .bottom_total_left{
+  flex-basis: 45%;
+  border-right:1px dashed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+}
+
+view.outter .bottom_total .bottom_total_left text{
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+view.outter .bottom_total .bottom_total_right{
+  flex-basis: 55%;
+  display: flex;
+  justify-content:center;
+  align-items: stretch;
+
+}
+
+view.outter .bottom_total .bottom_total_right .total_unit{
+  flex-basis: 16%;
+  border-right: 1px dashed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.outter .bottom_total .bottom_total_right .total_amount{
+  flex-basis: 44%;
+  border-right: 1px dashed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.outter .bottom_total .bottom_total_right .total_money{
+  flex-basis: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.outter .bottom_total .bottom_total_right text{
+  font-size: 23rpx;
+  font-weight: 600;
+}
+
+view.outter .bottom .table_left,
+view.outter .bottom .table_right{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+view.outter .bottom .table_left{
+  flex-basis: 45%;
+}
+
+view.outter .bottom .table_left .content scroll-view{
+  min-height: 800rpx;
+  max-height: 850rpx;
+  width: 100%;
+}
+
+view.outter .bottom .table_left .content scroll-view .scroll_item{
+  width: 100%;
+  height: 90rpx;
+  border-bottom: 1px solid;
+  display: flex;
+}
+
+view.outter .bottom .table_left .content scroll-view .scroll_item:last-child{
+  border-bottom: none;
+}
+
+view.outter .bottom .table_left .content scroll-view .scroll_item .content_name{
+  flex-basis: 45%;
+  display: flex;
+  border-right:1px dashed; 
+  justify-content: center;
+  align-items: center;
+  max-width: 45%;
+  white-space: pre-wrap;
+  
+}
+
+view.outter .bottom .table_left .content scroll-view .scroll_item .content_name text,
+view.outter .bottom .table_left .content scroll-view .scroll_item .content_brand text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 23rpx;
+}
+
+view.outter .bottom .table_left .content scroll-view .scroll_item .content_brand{
+  flex-basis: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 55%;
+  white-space: pre-wrap;
+}
+
+view.outter .bottom .table_right{
+  flex-basis: 55%;
+  max-width: 55%;
+  display: flex;
+  align-items: flex-start;
+}
+
+view.outter .bottom .table_right .in_out{
+  height: 100%;
+  white-space: nowrap;
+}
+
+view.outter .bottom .table_right view.scroll_item{
+  width: 405rpx;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+view.outter .bottom .table_right view.scroll_item:first-child{
+  border-right:1px dashed;
+}
+
+view.outter .bottom .table_right view.scroll_item .title{
+  flex-basis: 10%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px dashed;
+  background-color: #dbdbdb;
+}
+
+view.outter .bottom .table_right view.scroll_item .content{
+  flex-basis: 90%;
+}
+
+
+view.outter .bottom .table_left .title{
+  flex-basis: 10%;
+  display: flex;
+  background-color: #dbdbdb;
+  justify-content: center;
+  align-items: stretch;
+  font-size: 25rpx;
+  border-bottom: 1px dashed;
+}
+
+view.outter .bottom .table_right .scroll-item .title{
+  background-color: #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px dashed;
+  
+}
+
+view.outter .bottom .table_right .title .title_top{
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom:1px dashed; 
+}
+
+view.outter .bottom .table_right .title .title_top text{
+  font-size: 45rpx;
+}
+
+view.outter .bottom .table_right .title .title_bottom{
+  flex-basis: 50%;
+  font-size: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+
+view.outter .bottom .table_right .title .title_bottom .unit{
+  flex-basis: 16%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right:1px dashed;
+}
+
+view.outter .bottom .table_right .title .title_bottom .amount{
+  flex-basis: 44%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right:1px dashed;
+}
+
+view.outter .bottom .table_right .title .title_bottom .price{
+  flex-basis: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+view.outter .bottom .table_left .title{
+  border-right: 1px dashed;
+}
+
+
+view.outter .bottom .table_left .title .name{
+  flex-basis: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px dashed;
+}
+
+
+view.outter .bottom .table_left .title .brand{
+  flex-basis: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+view.outter .bottom .table_left .content,
+view.outter .bottom .table_right .content{
+  flex-basis: 90%;
+}
+
+view.outter .bottom .table_left .content{
+  border-right:1px dashed;
+}
+
+view.outter .bottom .table_right .content scroll-view{
+  min-height:800rpx;
+  max-height:850rpx;
+  width:100%;
+
+}
+
+view.outter .bottom .table_right .content scroll-view .scroll_item{
+  width: 100%;
+  height: 90rpx;
+  border-bottom: 1px solid;
+  display: flex;
+  flex-direction: row;
+
+}
+
+view.outter .bottom .table_right .content scroll-view .scroll_item:last-child{
+  border-bottom: none;
+}
+
+
+view.outter .bottom .table_right .content scroll-view .scroll_item .content_unit{
+  flex-basis: 16%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right:1px dashed; 
+}
+
+
+view.outter .bottom .table_right .content scroll-view .scroll_item .content_amount{
+  flex-basis: 44%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right:1px dashed; 
+}
+
+
+view.outter .bottom .table_right .content scroll-view .scroll_item .content_price{
+  flex-basis: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.outter .bottom .table_right .content scroll-view .scroll_item text{
+  font-size: 20rpx;
+}

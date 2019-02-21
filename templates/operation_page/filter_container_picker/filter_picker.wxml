@@ -1,0 +1,13 @@
+<!--templates/operation_page/filter_container_picker/filter_picker.wxml-->
+<template name='filter'>
+  <block wx:if='{{itemName==="team" || itemName === "addteammember"}}'>
+      <input placeholder='{{text}}' value='' placeholder-class='placeholder' bindinput='onFilterValueChanged'></input>
+      <image src='{{imgSrc}}' class='filterImg'></image>
+  </block>
+  <block wx:else>
+      <picker bindchange='onFilterValueChanged' range='{{range}}'><text>{{text}}</text></picker>
+      <image src='{{imgSrc}}' class='filterImg'></image>
+  </block>
+
+
+</template>

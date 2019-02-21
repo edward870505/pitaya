@@ -1,0 +1,160 @@
+/* pages/login/login.wxml.wxss */
+view.outter_container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+view.top_container{
+  flex-basis: 15%;
+  display: flex;
+  align-items:stretch;
+  padding-left: 20rpx;
+  box-shadow: 0rpx 5rpx 30rpx #d9d9d9;
+  }
+
+view.top_left{
+  flex-basis: 60%;
+  display: flex;
+  align-items: center;
+}
+
+text.user_name{
+  margin-left: 10rpx;
+}
+
+view.top_center{
+  flex-basis: 20%;
+}
+
+view.top_right{
+  flex-basis: 20%;
+}
+
+image.user_avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+}
+
+text.user_role{
+  margin-left: 10rpx;
+  font-size: 25rpx;
+  color: rgb(139, 138, 138);
+}
+
+view.center_container{
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+view.section_name{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  
+}
+
+view.section_name view.section_title{
+  flex-basis: 40%;
+  display: flex;
+}
+
+view.section_name view.section_input{
+  flex-basis: 60%;
+}
+
+
+view.section_password{
+  display: flex;
+  justify-content: flex-end;
+}
+
+view.section_password view.section_title{
+  flex-basis: 40%;
+  display: flex;
+}
+
+view.section_password view.section_input{
+  flex-basis: 60%;
+  
+}
+
+
+view.login_form{
+  flex-basis: 60%;
+  display: flex;
+  justify-content: center;
+  margin-top: 55rpx;
+}
+
+view.form_container{
+  display: flex;
+  justify-content: center;
+}
+
+
+view.section_input{
+  padding-left: 5rpx;
+}
+view.section_input input{
+  text-align: left;
+  vertical-align: bottom;
+  border-bottom: 1px solid #6d6b6b; 
+  font-size: 35rpx;
+}
+
+view.section_password{
+  margin-top: 30rpx;
+}
+
+image.login_image{
+  width: 180rpx;
+  height: 180rpx;
+}
+
+view.section_title{
+    display: flex;
+    align-items: flex-end;
+}
+
+image.title_avatar{
+  width: 50rpx;
+  height: 50rpx;
+  padding-right: 20rpx
+}
+
+text.title_text{
+  font-size: 35rpx;
+  color: #6d6b6b;
+}
+
+view.bottom_container{
+  display: flex;
+}
+
+view.login_form_btn{
+  flex-basis: 80%;
+  margin-top: 90rpx;
+}
+
+view.login_tips{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+text.login_first{
+  font-size: 30rpx;
+}
+
+text.can_do{
+  margin-top: 15rpx;
+  font-size: 25rpx;
+  color: #6d6b6b;
+}

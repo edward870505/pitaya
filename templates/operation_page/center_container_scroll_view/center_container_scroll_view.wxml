@@ -1,0 +1,516 @@
+<!--templates/operation_page/center_container_scroll_view/center_container_scroll_view.wxml-->
+<template name='dataset_item'>
+  <view wx:if='{{approval&&show}}' class='scroll_item' style="display:{{(text==initText)||(type==text)||(farm==text)||(target==text)||(text==teamnumer)||(text==name)||(text==farming)||(text==transfer)||(text==placeOfOrigin)||(text==type)?'flex':'none'}};">
+    <view class='scroll_item_top'>
+      <view class='scroll_item_top_left'>
+
+        <image class='scroll_item_top_left_img' src='{{imgSrc}}'></image>
+
+        <!--农场模板-->
+          <block wx:if='{{itemName==="farm"}}'>
+            <text class='scroll_item_top_left_text'>{{placeOfOrigin}}</text>
+            <text class='scroll_item_top_left_text'>{{name}}</text>
+          </block>
+        <!--农场模板-->
+
+        <!--转换模板-->
+          <block wx:if='{{itemName==="transfer"}}'>
+            <text class='scroll_item_top_left_text'>{{origin}}</text>
+            <text class='scroll_item_top_left_text'>转</text>
+            <text class='scroll_item_top_left_text'>{{target}}</text>
+            <text class='scroll_item_top_left_text' class='scrollitem_smaller_text'>[{{transfer}}转换]</text>
+          </block>
+        <!--转换模板-->
+
+        <!--审核模板-->
+          <block wx:if='{{itemName==="audition"}}'>
+            <text class='scroll_item_top_left_text'>{{action}}</text>
+            <text class='scroll_item_top_left_text'>{{type}}</text>
+            <text wx:if='{{type==="物资进仓"}}' class='scroll_item_top_left_text'>{{way}}</text>
+          </block>
+        <!--审核模板-->
+
+        <!--等级标准模板-->
+          <block wx:if='{{itemName==="grade"}}'>
+            <text class='scroll_item_top_left_text'>{{type}}</text>
+            <text class='scroll_item_top_left_text'>{{class}}</text>
+            <text class='scroll_item_top_left_text'>{{size}}</text>
+          </block>
+        <!--等级标准模板-->
+
+        <!--方案模板-->
+          <block wx:if='{{itemName==="scheme"}}'>
+            <text class='scroll_item_top_left_text'>{{name}}</text>
+            <text class='scrollitem_smaller_text'>[{{farming}}</text>
+            <text class='scrollitem_smaller_text'>方案]</text>
+          </block>
+        <!--方案模板-->
+
+        <!--小组标准模板-->
+          <block wx:if='{{itemName==="team"}}'>
+            <text class='scroll_item_top_left_text'>{{teamnumer}}</text>
+            <text class='scroll_item_top_left_text'>小组</text>
+            <text class='scroll_item_top_left_text' class='scrollitem_smaller_text'>[{{farm}}</text>
+            <text class='scroll_item_top_left_text' class='scrollitem_smaller_text'>{{fieldserial}}</text>
+            <text class='scroll_item_top_left_text' class='scrollitem_smaller_text'>地块]</text>
+          </block>
+        <!--小组标准模板-->
+
+        <!--添加成员标准模板-->
+          <block wx:if='{{itemName==="addteammember"}}'>
+          <text class='scroll_item_top_left_text'>{{name}}</text>
+          </block>
+        <!--添加成员标准模板-->
+
+        <!--地块模板-->
+          <block wx:if='{{itemName==="field"}}'>
+            <text class='scroll_item_top_left_text'>{{serial}}地块</text>
+            <text class='scrollitem_smaller_text'>[{{farm}}]</text>
+          </block>
+        <!--地块模板-->
+
+        <!--生产流程模板-->
+          <block wx:if='{{itemName==="producenode"}}'>
+            <text class='scroll_item_top_left_text'>{{name}}</text>
+            <text class='scrollitem_smaller_text'>[{{type}}</text>
+            <text class='scrollitem_smaller_text'>流程]</text>
+          </block>
+        <!--生产流程模板-->
+
+        <!--农事活动模板-->
+          <block wx:if='{{itemName==="farming"}}'>
+              <text class='scroll_item_top_left_text'>{{name}}</text>
+              <text class='scrollitem_smaller_text'>[{{type}}</text>
+              <text class='scrollitem_smaller_text'>农事]</text>
+            </block>
+          <!--农事活动模板-->
+
+          <!--物资模板-->
+          <block wx:if='{{itemName==="material"}}'>
+              <text class='scroll_item_top_left_text'>{{name}}</text>
+              <text class='scrollitem_smaller_text'>[{{type}}]</text>
+            </block>
+          <!--物资模板-->
+
+        <!--汇率模板-->
+          <block wx:if='{{itemName==="exchangerate"}}'>
+            <text class='scroll_item_top_left_text'>{{origin}}</text>
+            <text class='scroll_item_top_left_text'>兑</text>
+            <text class='scroll_item_top_left_text'>{{target}}</text>
+          </block>
+        <!--汇率模板-->
+
+        <!--单位模板-->
+          <block wx:if='{{itemName==="unit"}}'>
+              <text class='scroll_item_top_left_text' wx:if='{{eng!=""}}'>{{cn}}/{{eng}}</text>
+              <text class='scroll_item_top_left_text' wx:else>{{cn}}</text>
+          </block>
+        <!--单位模板-->
+
+        <!--品种模板-->
+          <block wx:if='{{itemName==="species"}}'>
+              <text class='scroll_item_top_left_text'>{{name}}</text>
+          </block>
+        <!--品种模板-->
+
+        <!--仓库维护模板-->
+          <block wx:if='{{itemName==="warehouse"}}'>
+              <text class='scroll_item_top_left_text'>{{name}}</text>
+              <text class='scrollitem_smaller_text'>({{type}})</text>
+          </block>
+        <!--仓库维护模板-->
+      </view>
+
+      <view class='scroll_item_top_right'>
+      <!--事项审核列表页面不显示switch按钮-->
+
+        <block wx:if='{{itemName!=="audition"&&itemName!=="addteammember"}}'>
+          <switch wx:if='{{switch}}' data-id='{{id}}' bindchange='onSwitchValueChanged' data-index='{{index}}' checked='{{status}}'></switch>
+        </block>
+
+        <block wx:if='{{itemName!=="audition"&&itemName=="addteammember"}}'>
+          <switch wx:if='{{switch}}' data-memberid='{{memberid}}' bindchange='onSwitchValueChanged' data-index='{{index}}'></switch>
+        </block>
+
+      </view>
+    </view>
+    <view class='scroll_item_center'>
+      <!--地块模板-->
+        <block wx:if='{{itemName==="field"}}'>  
+          <view>
+            <text wx:if='{{area!=""}}'>• 面积：{{area}}{{areaUnit}}</text>
+          </view>
+          <view id='variety' wx:for='{{varieties}}'>
+              <image src='/images/火龙果.png'></image><text>{{item.type}} : {{item.totalAmount}}{{item.unit}},{{item.growingArea}}{{item.growingAreaUnit}}</text>
+          </view>
+
+        </block>
+      <!--地块模板-->
+
+      <!--等级标准模板-->
+        <block wx:if='{{itemName==="grade"}}'>
+          <view>
+            <text wx:if='{{measure!=""}}'>• 果径/重量：{{measure}}</text>
+            <text wx:if='{{color!=""}}'>• 成色：{{color}}</text>
+            <text wx:if='{{leaf!=""}}'>• 叶子：{{leaf}}</text>
+            <text wx:if='{{skin!=""}}'>• 表皮：{{skin}}</text>
+          </view>  
+        </block>
+      <!--等级标准模板-->
+
+      <!--转换关系模板-->
+        <block wx:if='{{itemName==="transfer"}}'>
+          <view>
+            <text wx:if='{{measure!=""}}'>• 1{{origin}} = {{amount}}{{target}}</text>
+          </view>  
+        </block>
+      <!--转换关系模板-->
+
+      <!--添加成员标准模板-->
+        <block wx:if='{{itemName==="addteammember"}}'>
+          <view>
+            <text wx:if='{{sex!=""}}'>• 性别：{{sex}}</text>
+            <text wx:if='{{age!=""}}'>• 年龄：{{age}}</text>
+            <text wx:if='{{desc!=""}}'>• 备注：{{desc}}</text>
+          </view>  
+        </block>
+      <!--添加成员标准模板-->
+
+      <!--生产流程模板-->
+          <block wx:if='{{itemName==="producenode"}}'>
+            <view>
+              <text wx:if='{{desc!=""}}'>• 内容：{{desc}}</text>
+            </view>  
+        </block>
+      <!--生产流程模板-->
+
+      <!--地块模板-->
+        <block wx:if='{{itemName==="farming"}}'>  
+          <view>
+            <text wx:if='{{desc!=""}}'>• 内容：{{desc}}</text>
+          </view>
+          <!--<view>
+            <text>• 需用物资：</text>
+          </view>
+          <view id='material'>
+          <block wx:for='{{materials}}'>
+              <image src='{{item.imgSrc}}'></image><text>{{item.name}}</text>
+          </block>
+          </view>-->
+        </block>
+      <!--地块模板-->
+
+      <!--物资模板-->
+        <block wx:if='{{itemName==="material"}}'>
+            <view>
+              <text wx:if='{{type!=""}}'>• 类别：{{type}}</text>
+              <text wx:if='{{specification!=""}}'>• 品牌型号：{{specification}}</text>
+              <text wx:if='{{mainUnit!=""}}'>• 主单位：{{mainUnit}}</text>
+              <text wx:if='{{subUnit!=""}}'>• 副单位：{{subUnit}}</text>
+            </view>  
+        </block>
+      <!--物资模板-->
+
+      <!--汇率模板-->
+        <block wx:if='{{itemName==="exchangerate"}}'>
+            <view>
+              <text wx:if='{{rate!=""}}'>• 1{{origin}}={{rate}}{{target}}</text>
+            </view>  
+        </block>
+      <!--汇率模板-->
+
+      <!--单位模板-->
+        <block wx:if='{{itemName==="unit"}}'>
+            <view>
+              <text wx:if='{{type!=""}}'>• 类型：{{type}}</text>
+              <text wx:if='{{desc!=""}}'>• 描述：{{desc}}</text>
+            </view>  
+        </block>
+      <!--单位模板-->
+
+      <!--品种模板-->
+        <block wx:if='{{itemName==="species"}}'>
+            <view>
+              <text wx:if='{{type!=""}}'>• 种类：{{type}}</text>
+              <text wx:if='{{desc!=""}}'>• 描述：{{desc}}</text>
+            </view>  
+        </block>
+      <!--品种模板-->
+
+      <!--农场模板-->
+        <block wx:if='{{itemName==="farm"}}'>
+            <view>
+              <text wx:if='{{company!=""}}'>• 所属公司：{{company}}</text>
+              <text wx:if='{{company==""}}'>• 所属公司：空</text>
+            </view>  
+        </block>
+      <!--农场模板-->
+
+      <!--仓库维护模板-->
+        <block wx:if='{{itemName==="warehouse"}}'>
+          <view class='scrollview_container'>
+            <scroll-view scroll-x>
+              <picker wx:for='{{children}}' wx:for-index='idx' wx:for-item='children' data-fatherindex='{{index}}' data-fatherid='{{fatherid}}' data-id='{{children._id}}' data-index='{{idx}}' class='scroll-section' range="{{['库存查询','进仓','出仓','删除仓库']}}" bindchange='onWarehousePickerValueChanged'>
+                  <view>
+                    <image src='{{childrenWarehouseImg}}'></image>
+                    <text>{{children.name}}</text>
+                  </view>
+              </picker>
+              <!--<view wx:for='{{children}}' class='scroll-section'>
+                  <image src='{{childrenWarehouseImg}}'></image>
+                  <text>{{item.name}}</text>
+              </view>-->
+            </scroll-view>
+          </view>
+        </block>
+      <!--仓库维护模板-->
+
+      <!--方案模板-->
+        <block wx:if='{{itemName==="scheme"}}'>
+          <view class='scrollview_container'>
+            <scroll-view scroll-x>
+              <view wx:for='{{materials}}' class='scroll-section'>
+                <image src='{{materialImgSrc}}'></image>
+                <text>{{item.material}}</text>
+                <text>{{item.totalAmount}} {{item.amountUnit}}</text>
+              </view>
+            </scroll-view>
+          </view>
+          <view wx:if='{{desc!=""}}' class='content_text'>• 内容：{{desc}}</view>
+        </block>
+      <!--方案模板-->
+
+      <!--小组管理模板-->
+        <block wx:if='{{itemName==="team"}}'>
+          <view class='scrollview_container'>
+            <scroll-view scroll-x>
+              <picker wx:for='{{members}}' class='scroll-section' range='{{["删除"]}}' bindchange='onMemberPickerValueChanged' data-id='{{item._id}}' data-index='{{teamindex}}'>
+              <view>
+                <image src='{{memberImg}}'></image>
+                <text>{{item.name}}</text>
+              </view>
+              </picker>
+            </scroll-view>
+          </view>
+        </block>
+      <!--小组管理 模板-->
+
+      <!--审核模板-->
+        <block wx:if='{{itemName==="audition"}}'>
+          <view class='submit_info submit_person_time'>提交人：{{submit_person}}，提交时间：{{submit_time}}</view>
+          <scroll-view class='audit_content' scroll-y>
+
+
+            <block wx:if='{{type==="分级标准"}}'>
+              <view class='submit_info'>
+                • 标准名称：{{content.name}}
+              </view>
+              <view class='submit_info'>
+                • 大小/重量：{{content.size}}
+              </view>
+            </block> 
+
+
+            <block wx:if='{{type==="地块"}}'>
+              <view class='submit_info'>
+                • 农场：{{content.farm}}
+              </view>
+              <view class='submit_info'>
+                • 编号：{{content.serial}}
+              </view>
+              <view class='submit_info'>
+                • 品种：
+              </view>
+              <view wx:for='{{content.type}}' class='pitaya_type_container'>
+                <view><image class='pitaya_type' src='/images/火龙果.png'></image></view>
+                <view><text>{{item.name}} - {{item.amount}}棵,{{item.area}}{{item.unit}}</text></view>
+              </view>
+            </block>
+
+
+
+            <block wx:if='{{type==="生产流程"}}'>
+              <view class='submit_info'>
+                • 流程类型：{{content.type}}
+              </view>
+              <view class='submit_info'>
+                • 流程名称：{{content.name}}
+              </view>
+              <view class='submit_info'>
+                • 流程内容：{{content.content}}
+              </view>
+            </block> 
+
+            <block wx:if='{{type==="农事活动"}}'>
+              <view class='submit_info'>
+                • 活动类型：{{content.type}}
+              </view>
+              <view class='submit_info'>
+                • 活动名称：{{content.name}}
+              </view>
+              <view class='submit_info'>
+                • 内容：{{content.content}}
+              </view>
+            </block> 
+            
+            <block wx:if='{{type==="物资"}}'>
+              <view class='submit_info'>
+                • 类别：{{content.type}}
+              </view>
+              <view class='submit_info'>
+                • 名称：{{content.name}}
+              </view>
+              <view class='submit_info'>
+                • 品牌：{{content.brand}}
+              </view>
+              <view class='submit_info'>
+                • 描述：{{content.content}}
+              </view>
+            </block> 
+
+            <block wx:if='{{type==="汇率"}}'>
+              <view class='submit_info'>
+                • 1{{content.origin}} 兑 {{content.exchange}}{{content.target}}
+              </view>
+            </block>
+
+            <block wx:if='{{type==="单位"}}'>
+              <view class='submit_info'>
+                • 单位类型：{{content.type}}
+              </view>
+              <view class='submit_info'>
+                • 单位名称：{{content.name}}
+              </view>
+            </block>
+
+            <block wx:if='{{type==="品种"}}'>
+              <view class='submit_info'>
+                • 品种类型：{{content.type}}
+              </view>
+              <view class='submit_info'>
+                • 品种名称：{{content.name}}
+              </view>
+            </block>
+
+            <block wx:if='{{type==="小组"}}'>
+              <view class='submit_info'>
+                • 小组编号：{{content.serial}}
+              </view>
+              <view class='submit_info'>
+                <view wx:for='{{content.members}}' class='pitaya_type_container'>
+                  <view><image class='pitaya_type' src='/images/user.png'></image></view>
+                  <view><text>{{item}}</text></view>
+              </view>
+              </view>
+            </block>
+
+            <block wx:if='{{type==="方案"}}'>
+              <view class='submit_info'>
+                • 方案类型：{{content.type}}
+              </view>
+              <view class='submit_info'>
+                <view wx:for='{{content.materials}}' class='pitaya_type_container'>
+                  <view><image class='pitaya_type' src='/images/肥料.png'></image></view>
+                  <view><text>{{item.name}}：{{item.amount}}{{item.unit}}</text></view>
+              </view>
+              </view>
+            </block> 
+            
+            <block wx:if='{{type==="转换关系"}}'>
+              <view class='submit_info'>
+                • 1{{content.origin}} = {{content.amount}}{{content.target}}
+              </view>
+            </block>
+            
+            <block wx:if='{{type==="生产计划"}}'>
+              <view class='submit_info'>
+                <view wx:for='{{content.plans}}' class='pitaya_type_container produce_plan'>
+                  <view>
+                    <image class='pitaya_type' src='/images/计划管理.png'>
+                    </image>
+                  </view>
+                  <view>
+                    <text>{{item.date}}：{{item.name}}({{item.type}})</text>
+                    <view class='prediction' wx:if='{{item.prediction!==null}}' wx:for='{{item.prediction}}'>
+                      <view>{{item.grade}} - {{item.production}}{{item.unit}} ,占比{{item.portion*100}}%</view>
+                    </view>
+                  </view>
+              </view>
+              </view>
+            </block>
+
+            <block wx:if='{{type==="物资进仓"}}'>
+              <view class='submit_info'>
+                <view wx:for='{{content.plans}}' class='pitaya_type_container produce_plan'>
+                  <view>
+                    <image class='pitaya_type' src='/images/计划管理.png'>
+                    </image>
+                  </view>
+                  <view>
+                    <text>{{item.date}}：【{{item.brand}}】{{item.name}}（{{item.type}}）</text>
+                    <view class='inoutwarehouse'>
+                      + {{item.amount}}{{item.unit}}, {{item.price}} {{item.currency}} / {{item.unit}}
+                    </view>
+                  </view>
+              </view>
+              </view>
+            </block>
+
+            <block wx:if='{{type==="物资出仓"}}'>
+              <view class='submit_info'>
+                <view wx:for='{{content.plans}}' class='pitaya_type_container produce_plan'>
+                  <view>
+                    <image class='pitaya_type' src='/images/计划管理.png'>
+                    </image>
+                  </view>
+                  <view>
+                    <text>{{item.date}}：【{{item.brand}}】{{item.name}}（{{item.type}}）</text>
+                    <view class='inoutwarehouse'>
+                      - {{item.amount}}{{item.unit}}, {{item.price}} {{item.currency}} / {{item.unit}}
+                    </view>
+                  </view>
+              </view>
+              </view>
+            </block>
+
+            
+
+          </scroll-view>
+
+        </block>
+      <!--审核模板-->
+
+    </view>
+    <block>
+      <view class='scroll_item_bottom'>
+          <!--小组管理页面SCROLL-ITEM按钮-->  
+          <image wx:if='{{itemName === "team" && addTeamMember}}' id='add_member_img' class='operation_btn' src='/images/添加2.png' bindtap='onAddMemberBtnTap' data-index='{{index}}' data-docid='{{docid}}' data-action='addteammember'></image>
+          <!--一级仓管理按钮-->
+          <block wx:if='{{itemName == "warehouse" && type=="一级仓"}}'>
+            <picker wx:if='{{alter}}' bindchange='onRootWarehousePickerValueChanged' range="{{['库存查询','进仓','出仓']}}" data-index='{{index}}'>
+              <image data-action='alter' class='alter_standard_img operation_btn' src='/images/仓库库存管理250.png'></image>
+            </picker>
+          </block> 
+          <!--修改按钮-->
+          <block wx:if='{{itemName!=="audition"}}'>
+            <view> 
+              <image wx:if='{{alter}}' data-action='alter' class='alter_standard_img operation_btn' src='/images/alter_btn.png' bindtap='onAlterBtnTap' data-index='{{index}}' ></image>
+            </view> 
+          </block>
+          <!--审核通过按钮-->  
+          <image wx:if='{{itemName==="audition"}}' class='audit_img operation_btn' src='/images/审核通过-2.png' bindtap='onAuditYesBtnTap' data-index='{{index}}' ></image>
+          <!--审核不通过按钮-->
+          <view>
+          <image wx:if='{{itemName==="audition"}}' class='audit_img operation_btn' src='/images/审核不通过-2.png' bindtap='onAuditNoBtnTap' data-index='{{index}}' ></image>
+          </view>  
+          <!--删除按钮-->
+          <block wx:if='{{delete}}'>
+          <view>
+            <image class='delete_standard_img operation_btn' data-action='delete' src='/images/delete.png' bindtap='onDeleteBtnTap' data-index='{{index}}' ></image>
+          </view>    
+          </block>  
+        </view>
+    </block>
+  </view>
+</template>
+

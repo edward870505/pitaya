@@ -1,0 +1,36 @@
+
+<!--pages/team/addteammember/addteammember.wxml-->
+<!--引入模板-->
+<import src='../../../templates/operation_page/filter_container_picker/filter_picker.wxml'/>
+<import src='../../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxml'/>
+<import src='../../../templates/operation_page/center_container_scroll_view/center_container_scroll_view.wxml'/>
+
+<view class='outter_container'>
+  <!--顶部筛选框-->
+  <view class='filter_container'>
+    <view>
+      <template is='filter' data='{{itemName:itemName,range:filterData.range,imgSrc:filterData.imgSrc,text:filterData.text}}'></template>
+    </view>
+  </view>
+  <!--顶部筛选框-->
+
+  <!--头部操作按钮-->
+  <view class='top_container'>
+    <scroll-view scroll-x>
+      <template is='operations_bar' wx:for='{{operations}}' data='{{imgSrc:item.imgSrc,text:item.text,action:item.action,name:item.name}}'></template>
+    </scroll-view>
+  </view>
+  <!--头部操作按钮-->
+
+  
+  <!--中部基础信息数据-->
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <template is='dataset_item' wx:for='{{dataset}}' data='{{approval:item.approval,index:index,imgSrc:itemImgSrc,status:item.status,name:item.name,serial:item.serial,teamnumer:item.teamnumber,itemName:itemName,memberImg:memberImg,age:item.age,sex:item.sex,desc:item.desc,text:filterData.text,initText:filterData.initText,switch:user.authorities.operation.basicinfo.team.switch,alter:user.authorities.operation.basicinfo.team.alter,delete:user.authorities.operation.basicinfo.team.delete,addTeamMember:user.authorities.operation.basicinfo.team.addTeamMember,memberid:item._id,teamMemberIds:teamMemberIds}}'>
+      </template>
+    </scroll-view>
+  </view>
+  <view class='bottom_center'>
+  
+  </view>
+</view>

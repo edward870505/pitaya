@@ -1,0 +1,57 @@
+page{
+  background-color: #eeeeee;
+}
+
+
+view.outter_container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+view.filter_container{
+  flex-basis: 10%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.filter_container view{
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-bottom: 10rpx;
+  padding-top: 10rpx;
+  border-radius:35rpx; 
+  border: 1rpx solid #0dc44e;
+}
+
+
+
+view.top_container{
+  flex-basis: 10%;
+  background-color:#ffffff;
+  padding-left: 20rpx;
+}
+
+
+view.center_container{
+  flex-basis: 80%;
+}
+
+view.top_container scroll-view{
+  width: 98%;
+  white-space: nowrap;
+}
+
+view.center_container scroll-view{
+  margin-top: 25rpx;
+  height: 93%;
+  max-height: 920rpx;
+}
+
+

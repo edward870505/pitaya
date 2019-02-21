@@ -1,0 +1,76 @@
+<!--components/popup/popup.wxml-->
+<view class='wx_popup_container' hidden='{{!isShow}}' catchtouchmove="ture">
+  <view class='wx_popup_mask'></view>
+  <view class='wx_popup_dialog'>
+    <view class='dialog_title'>{{title}}</view>
+    <view class='dialog_content'>
+      <view class='checkbox_group_container'>
+        <scroll-view scroll-y>
+          <checkbox-group bindchange='onCheckboxGroupValueChaned'>
+            <block wx:if='{{key=="field"}}'>
+             
+              <label wx:for='{{items}}'>
+                <view>
+                  <view><checkbox value='{{item.serial}}' checked='{{item.checked}}'/></view>
+                  <text class='first'>[{{item.serial}}]</text> 
+                  <text>地块</text>
+                </view>           
+              </label>
+
+            </block>
+            <block wx:if='{{key=="team"}}'>
+              <label wx:for='{{items}}'>
+                <view>
+                  <view><checkbox value='{{item.serial}}' checked='{{item.checked}}'/></view>
+                  <text class='first'>[{{item.serial}}]</text>
+                  <text>小组</text>
+                </view>           
+              </label>
+            </block>
+            <block wx:if='{{key=="farmingInfo"}}'>
+              <view class='farminginfo-container'>
+                <view class='scheme-info'>
+                  <view>
+                    <view class='info-title'>方案：{{itemData.scheme.name}}</view>
+                    <view wx:for='{{itemData.scheme.materials}}'>
+                      <view>
+                      ▪ {{item.material}} - {{item.totalAmount}}{{item.amountUnit}}
+                      </view>
+                    </view>
+                  </view>
+                  <view>
+
+                  </view>
+                </view>
+                <view class='teams-info'>
+                  <view class='info-title'>小组</view>
+                  <view wx:for='{{itemData.team}}'>
+                    <view>
+                      ▪ {{item}}小组
+                    </view>
+                  </view>
+                </view>
+                <view class='desc-info'>
+                  <block wx:if='{{itemData.desc!=""}}'>
+                    <view class='info-title'>备注</view>
+                    <view>{{itemData.desc}}</view>
+                  </block>
+                </view>
+                
+              </view>
+            </block>
+
+          </checkbox-group>
+        </scroll-view>
+      </view>
+    </view>
+    <view class='dialog_footer'>
+      <view class='dialog_btn' catchtap='_cancelEvent'>
+          {{cancelText}}
+      </view>
+      <view class='dialog_btn' catchtap='_confirmEvent'>
+          {{confirmText}}
+      </view>
+    </view>
+  </view>
+</view>

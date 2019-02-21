@@ -1,0 +1,98 @@
+<!--templates/alter_item_page/bottom_container_scroll_view_form/alter_form.wxml-->
+<!--通用表单区域模板-->
+<template name='alter_form_section'>
+  <view class='alter_section'>
+    <!--区域左边图标-->
+    <view class='alter_section_left'>
+      <image src='{{imgSrc}}'></image>
+    </view>
+    <!--区域中间标签-->
+    <view class='alter_section_center'>
+      <text>{{text}}</text>
+    </view>
+    <!--区域右边输入框-->
+    <view class='alter_section_right'>
+
+      <!--普通picker-->
+        <picker wx:if='{{inputType === "commonpicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{pickerRange[rangeKey]}}' range-key='{{range_key}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+      <!--普通picker-->
+
+      
+
+      <!--多选View-->
+      <block wx:if='{{itemName=="farmdiary"}}'>
+        <block wx:if='{{name=="field"||name=="team"}}'>
+          <view class='radio-view-container' bindtap='onRaidoViewTap' data-key='{{name}}' data-name='{{name}}' data-index='{{index}}'>
+            <view wx:for='{{value}}' wx:key='record'>
+              <text>{{item}}</text>
+            </view>
+          </view>
+        </block>
+      </block>
+      <!--多选View-->
+
+      <picker wx:if='{{inputType==="picker"}}' data-key='{{name}}' data-name='{{name}}' data-index='{{index}}' range='{{range}}' bindchange='onPickerValueChanged'><text>{{placeholder}}</text><image src='/images/down.png' ></image></picker>
+
+      <picker wx:if='{{inputType==="farmingpicker"}}' data-key='{{name}}' data-name='{{name}}' data-index='{{index}}' range='{{farmingRange}}' bindchange='onPickerValueChanged'><text>{{placeholder}}</text><image src='/images/down.png' ></image></picker>
+
+      <picker wx:if='{{inputType==="farmpicker"}}' data-key='{{name}}' data-name='{{name}}' data-index='{{index}}' range='{{farmsRange}}' bindchange='onPickerValueChanged'><text>{{placeholder}}</text><image src='/images/down.png' ></image></picker>
+
+      <picker wx:if='{{inputType==="materialpicker"}}' data-key='{{name}}' data-name='{{name}}' data-index='{{index}}' range='{{range}}' bindchange='onPickerValueChanged'><text>{{placeholder}}</text><image src='/images/down.png' ></image></picker>
+
+      <picker wx:if='{{inputType==="datepicker"}}' mode='date' data-index='{{index}}' data-key='{{name}}' data-name='{{name}}' bindchange='onPickerValueChanged'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+
+          <!--公司picker-->
+          <picker wx:if='{{inputType === "companypicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{companiesRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+          <!--公司picker-->
+
+          <!--所属地picker-->
+          <picker wx:if='{{inputType === "placepicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{placesRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+          <!--所属地picker-->
+
+      <!--单位picker-->
+      <picker wx:if='{{inputType === "unitPicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{unitsRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+      <!--单位picker-->
+
+      <!--转换picker-->
+      <picker wx:if='{{inputType === "transferPicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{transfersRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+      <!--转换picker-->
+      
+      <!--普通input-->
+      <input wx:if='{{inputType==="input"}}' bindblur='onInputBlur' placeholder='{{placeholder}}' value='{{value}}' data-name='{{name}}' data-key='{{name}}' name='{{name}}' placeholder-class='placeholder' data-index='{{index}}' bindblur='onInputBlur'></input>
+      <!--普通input-->
+
+      <!--数字input-->
+      <input wx:if='{{inputType==="number"}}' type='digit' bindblur='onInputBlur' placeholder='{{placeholder}}' value='{{value}}' data-name='{{name}}'data-key='{{name}}'  name='{{name}}' placeholder-class='placeholder' data-index='{{index}}'></input>
+      <!--数字input-->
+
+      <input wx:if='{{inputType==="disabledinput"}}' placeholder='{{placeholder}}' placeholder-class='placeholder' data-index='{{index}}' disabled value='{{value}}'><text></text></input>
+
+      <input wx:if='{{inputType==="processinput"}}'placeholder='{{placeholder}}' placeholder-class='placeholder' data-index='{{index}}' disabled><text></text></input>
+
+      <textarea wx:if='{{inputType==="textarea"}}' placeholder='{{placeholder}}' value='{{value}}' placeholder-class='placeholder' data-key='{{name}}' data-name='{{name}}' data-index='{{index}}' bindblur='onInputBlur'></textarea>
+      <!--是否显示单位picker-->
+      <picker wx:if='{{areaUnitInput===true}}' data-key='{{name}}' data-name='fieldAreaUnit' data-index='{{index}}' range='{{areaUnitsRange}}' bindchange='onPickerValueChanged'><text>{{areaUnit}}</text><image src='/images/down.png'></image></picker>
+      <picker wx:if='{{amountUnit===true}}' data-index='{{index}}'><text>请选择数量单位</text><image src='/images/down.png'></image></picker>
+
+      <block wx:if='{{unitInputType=="contenttextarea"}}'>
+        <view class='scheme_content'>
+            <block wx:if='{{inputPlaceHolder!=""}}' wx:for='{{inputPlaceHolder}}'>
+                  <view>{{index+1}}：{{item.material}}[{{item.totalAmount}}{{item.amountUnit}}]</view>
+            </block>
+        </view>
+      </block>
+
+      <block wx:if='{{action=="alterFarmingDiary"}}'>
+        <view wx:if='{{name=="scheme"}}' class='scheme_content'>
+            <block wx:if='{{value!=""}}' wx:for='{{value.materials}}'>
+                  <view>{{index+1}}：{{item.material}}[{{item.totalAmount}}{{item.amountUnit}}]</view>
+            </block>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>
+<!--通用表单区域模板-->
+
+
+

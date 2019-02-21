@@ -1,0 +1,57 @@
+<!--pages/login/login.wxml.wxml-->
+<view class='outter_container'>
+
+  <view class='top_container'>
+    <view class='top_left'>
+      <image src='{{userData.avatarUrl}}' class='user_avatar'>
+      </image>
+      <text class='user_name'>{{userData.cnname}}</text>
+      <text class='user_role'>{{userData.role}}</text>
+    </view>
+    <view class='top_center'>
+    </view>
+    <view class='top_right'>
+    </view>
+  </view>
+
+  <view class='center_container'>
+    <view>
+      <image  class='login_image' src='/images/user_login.png'></image>
+    </view>
+    <view class='login_form'>
+      <view class='form_container'>
+        <form class='login' bindsubmit='loginFormSubmit' bindreset='loginFormReset'>
+          <view class='section_name'>
+            <view class='section_title'>
+              <image class='title_avatar' src='/images/user.png'></image>
+              <text class='title_text'>用户名</text>
+            </view>
+            <view class='section_input'>
+              <input name='user_name' placeholder='请输入用户名'></input>
+            </view>
+          </view>
+          <view class='section_password'>
+            <view class='section_title'>
+            <image class='title_avatar' src='/images/password.png'></image>
+              <text class='title_text'>密码</text>
+            </view>
+            <view class='section_input'>
+              <input name='user_pwd' password placeholder='请输入密码'></input>
+            </view>
+          </view>
+          <view class='login_form_btn'>
+            <button form-type='submit' type='primary'>登录</button>
+          </view>
+        </form>
+      </view>
+    </view>
+    <view class='login_tips'>
+      <text class='login_first'>请先登录账号</text>
+      <text class='can_do'>登录后可进行行情查看、农场数据管理等操作</text>
+    </view>
+  </view>
+
+  <view class='bottom_container'>
+
+  </view>
+</view>

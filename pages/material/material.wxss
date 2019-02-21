@@ -1,0 +1,5 @@
+/* pages/material/material.wxss */
+@import '../../templates/operation_page/common_wxss/operation_page.wxss';
+@import '../../templates/operation_page/filter_container_picker/filter_picker.wxss';
+@import '../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxss';
+@import '../../templates/operation_page/center_container_scroll_view/center_container_scroll_view.wxss';

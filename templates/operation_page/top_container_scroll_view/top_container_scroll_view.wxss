@@ -1,0 +1,23 @@
+/* templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxss */
+
+
+view.top_container view.scroll_item{
+  width: 150rpx;
+  height: 150rpx;
+  display: inline-flex;
+  margin-right: 30rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+view.top_container view.scroll_item image.scroll_item_img{
+  height: 60rpx;
+  width: 60rpx;
+}
+
+view.top_container text.scroll_item_title{
+  font-size: 30rpx;
+}

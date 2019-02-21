@@ -1,0 +1,45 @@
+<!--pages/field/alter/alter.wxml-->
+<import src='../../../templates/alter_item_page/top_container_title/alter_title.wxml'/>
+<import src='../../../templates/alter_item_page/bottom_container_scroll_view_form/alter_form.wxml'/>
+
+<view class='outter_container'>
+<!--头部标题-->
+  <view class='top_container'>
+    <template is='title' data='{{imgSrc:title.imgSrc,text:title.text}}'></template>
+  </view>
+<!--头部标题-->
+<!--表单-->
+  <view class='bottom_container'>
+    <scroll-view scroll-y>
+      <form bindsubmit='onAlterFormSubmit'>
+        <template is='alter_form_section' wx:for='{{formSections}}' data='{{index:index,areaUnit:item.areaUnit,imgSrc:item.imgSrc,text:item.text,inputType:item.inputType,placeholder:item.inputPlaceHolder,areaUnitInput:item.areaUnitInput,areaUnit:item.fieldAreaUnit,value:item.value,name:item.name,speciesRange:pickerRange.species,areaUnitsRange:pickerRange.areaUnits}}'></template>
+        <!--定制内容-->
+        <block wx:for='{{otherFormSections}}'>
+            <view class='alter_section other_section'>
+            <view class='alter_section_left'>
+              <image src='{{otherFormSectionItem.imgSrc}}'></image>
+            </view>
+            <view class='alter_section_center'>
+              <text>{{otherFormSectionItem.text}}</text>
+            </view>
+            <view class='alter_section_right'>
+              <picker data-name='type' data-index='{{index}}' data-key='type' range='{{pickerRange.species}}' bindchange='onPickerValueChanged'><text>{{item.type}}</text><image src='/images/down.png'></image></picker>
+              <input type='digit' bindblur='onInputBlur' data-index='{{index}}' value='{{item.totalAmount}}' placeholder='请输入品种数量' placeholder-class='placeholder' data-name='totalAmount' data-key='totalAmount'></input>
+              <input type='digit' bindblur='onInputBlur' data-index='{{index}}' placeholder='请输入种植面积' placeholder-class='placeholder' data-name='growingArea' data-key='growingArea' value='{{item.growingArea}}'></input>
+              <picker data-index='{{index}}' data-name='growingAreaUnit' data-key='growingAreaUnit' range='{{pickerRange.areaUnits}}' bindchange='onPickerValueChanged'><text>{{item.growingAreaUnit}}</text><image src='/images/down.png'></image></picker>
+            </view>
+          </view>
+        </block>
+        <view id='addSpeciesBtn' hover-class='species_container_bottom_hover' bindtap='onAddSpeciesBtnTap'>
+          <text>添加种植品种</text>
+        </view>
+        <view class='alter_section_btn'>
+            <button form-type='submit' plain>提交</button>
+        </view>
+      </form>
+    </scroll-view>
+  </view>
+<!--表单-->
+</view>
+
+

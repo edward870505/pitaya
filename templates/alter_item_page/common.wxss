@@ -1,0 +1,24 @@
+view.outter_container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+view.top_container{
+  flex-basis: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.bottom_container{
+  flex-basis: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+view.bottom_container scroll-view{
+  white-space: nowrap;
+  height: 100%;
+  width: 90%;
+}

@@ -1,0 +1,5 @@
+<!--templates/alter_item_page/top_container_title/alter_title.wxml-->
+<template name='title'>
+  <image class='alter_title_img' src='{{imgSrc}}'></image>
+  <text class='alter_title_text'>{{text}}</text>
+</template>

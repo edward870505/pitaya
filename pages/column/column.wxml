@@ -1,0 +1,4 @@
+<view class='container'>
+  <ff-canvas id='column-dom' canvas-id='column' opts='{{opts}}'>
+  </ff-canvas>
+</view>

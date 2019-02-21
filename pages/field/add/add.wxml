@@ -1,0 +1,44 @@
+<import src='../../../templates/add_item_page/center_container_form/center_container_form.wxml'/>
+<view class='outter_container'>
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <!--新增页面表单-->
+      <form bindsubmit='onAddItemFormSubmit'>
+        <!--其他Section-->
+          <!--根据formSections的值显示表单-->
+        <template is='form_section'  wx:for='{{formSections}}' data='{{imgSrc:item.imgSrc,text:item.text,placeholder:item.inputPlaceHolder,inputType:item.inputType,unitInput:item.unitInput,unitInputType:item.unitInputType,name:item.name,value:item.value,initPickerText:item.initPickerText,index:index,farmsRange:pickerRange.farms,areaUnitsRange:pickerRange.areaUnits}}'></template>
+        <!--其他Section-->
+        <!--品种Section-->
+        <view class='species_container'>
+           <view wx:for='{{otherFormSections}}' class='species_container_top'>
+              <view class='species_container_top_left'>
+                <image class='species_img' src='{{customedFormSectionItem.imgSrc}}'></image>
+              </view>
+              <view class='species_container_top_center'>
+                <text class='species_text'>{{customedFormSectionItem.text}}</text>
+              </view>
+              <view class='species_container_top_right'>
+                <picker bindchange='onPickerValueChanged' range='{{pickerRange.species}}' data-index='{{index}}' data-key='type' data-name='type'><text>{{item.type}}</text><image src='/images/down.png'></image></picker>
+                <input type='digit' bindblur='onInputBlur' value='{{item.totalAmount}}' data-index='{{index}}' data-key='totalAmount' data-name='totalAmount' placeholder='请输入数量(棵)' placeholder-class='placeholder'></input>
+                <input type='digit' bindblur='onInputBlur' value='{{item.growingArea}}' data-index='{{index}}' data-key='growingArea' data-name='growingArea' placeholder='请输入面积' placeholder-class='placeholder'></input>
+                 <picker bindchange='onPickerValueChanged' range='{{pickerRange.areaUnits}}' data-index='{{index}}' data-key='growingAreaUnit' data-name='growingAreaUnit'><text>{{item.growingAreaUnit}}</text><image src='/images/down.png'></image></picker>
+              </view>
+           </view>
+           <view class='species_container_bottom' hover-class='species_container_bottom_hover' bindtap='onAddCustomedFormSectionBtnTap'>
+              <text class='add_species_text'>添加种植品种</text>
+           </view>
+        </view>
+        <!--品种Section-->
+        <!--提交Button-->
+        <view class='btnGroup'>
+          <button form-type='submit'plain>提交</button>
+        </view>
+        <!--提交Button-->
+      </form>
+      <!--新增页面表单-->
+    </scroll-view>
+  </view>
+  <view class='bottom_container'>
+    
+  </view>
+</view>

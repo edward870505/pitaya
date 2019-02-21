@@ -1,0 +1,16 @@
+<!--pages/audit/disapproval/disapproval.wxml-->
+<import src='../../../templates/add_item_page/center_container_form/center_container_form.wxml'/>
+<view class='outter_container'>
+  <view class='top_container'></view>
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <form>
+        <template is='form_section'  wx:for='{{sections}}' data='{{...item[index],imgSrc:item.imgSrc,text:item.text,placeHolder:item.inputPlaceHolder,inputType:item.inputType,unitInput:item.unitInput,unitInputType:item.unitInputType}}'></template>
+      <view class='btnGroup'>
+          <button form-type='submit' bindtap='onSubmitBtnTap' plain>提交</button>
+        </view>
+      </form>
+    </scroll-view>
+  </view>
+  <view class='bottom_center'></view>
+</view>

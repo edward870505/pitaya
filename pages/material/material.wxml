@@ -1,0 +1,36 @@
+<!--pages/material/material.wxml-->
+<!--引入模板-->
+<import src='../../templates/operation_page/filter_container_picker/filter_picker.wxml'/>
+<import src='../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxml'/>
+<import src='../../templates/operation_page/center_container_scroll_view/center_container_scroll_view.wxml'/>
+
+<view class='outter_container'>
+  <!--顶部筛选框-->
+  <view class='filter_container'>
+    <view>
+      <template is='filter' data='{{range:filterData.range,imgSrc:filterData.imgSrc,text:filterData.text}}'></template>
+    </view>
+  </view>
+  <!--顶部筛选框-->
+
+  <!--头部操作按钮-->
+  <view class='top_container'>
+    <scroll-view scroll-x>
+      <template is='operations_bar' wx:for='{{operations}}' data='{{imgSrc:item.imgSrc,text:item.text,action:item.action}}'></template>
+    </scroll-view>
+  </view>
+  <!--头部操作按钮-->
+
+  
+  <!--中部基础信息数据-->
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <template is='dataset_item' wx:for='{{dataset}}' data='{{mainUnit:item.mainUnit,subUnit:item.subUnit,show:item.show,initText:filterData.initText,text:filterData.text,approval:item.approval,index:index,imgSrc:itemImgSrc,type:item.type,status:item.status,name:item.name,specification:item.specification,type:item.type,itemName:itemName,switch:user.authorities.operation.basicinfo.materials.switch,alter:user.authorities.operation.basicinfo.materials.alter,delete:user.authorities.operation.basicinfo.materials.delete}}'>
+      </template>
+    </scroll-view>
+  </view>
+  <view class='bottom_center'>
+  
+  </view>
+</view>
+

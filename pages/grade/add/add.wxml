@@ -1,0 +1,16 @@
+<!--pages/grade/add/add.wxml-->
+<import src='../../../templates/add_item_page/center_container_form/center_container_form.wxml'/>
+<view class='outter_container'>
+  <view class='top_container'></view>
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <form bindsubmit='onAddItemFormSubmit'>
+        <template is='form_section'  wx:for='{{formSections}}' data='{{gradeRange:pickerRange.grade,value:item.value,itemName:itemName,name:item.name,index:index,canItBeEmpty:item.canItBeEmpty,imgSrc:item.imgSrc,text:item.text,placeholder:item.inputPlaceHolder,inputType:item.inputType,unitInput:item.unitInput,unitInputType:item.unitInputType}}'></template>
+      <view class='btnGroup'>
+          <button form-type='submit' plain>提交</button>
+      </view>
+      </form>
+    </scroll-view>
+  </view>
+  <view class='bottom_center'></view>
+</view>

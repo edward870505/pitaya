@@ -1,0 +1,67 @@
+<view class='outter_container'>
+
+  <view class='top_container'>
+    <image class='fruit_title_avatar' src='{{avatarUrls[species+"AvatarUrl"]}}'>
+    </image>
+    <text class='fruit_name'>{{name}}</text>
+    <picker class='classification_picker' value='{{classificationIndex}}' range='{{fruitClassifications[species]}}' bindchange='bindClassificationPickerChange'>
+      <view class='picker'>{{fruitClassifications[species][classificationIndex]}}</view>
+    </picker>
+    <image class='down_arrow' src='/images/down-arrow-2.png'></image>
+  </view>
+
+  <view class='center_container'>
+
+      <view class='highest_price_container price_container'>
+        <view class='highest_title price_title'>
+          <text>最高价</text>
+        </view>
+        <view class='highest_price price_value'>
+           <text class='price_val'>125</text>
+            <text class='yuan'>元</text>
+        </view>
+        <view class='highest_price_brand price_brand'>
+          <text>鸿桂华</text>
+        </view>
+      </view>
+
+      <view class='lowest_price_container price_container'>
+          <view class='lowest_title price_title'>
+            <text>最低价</text>
+          </view>
+          <view class='lowest_price price_value'>
+            <text class='price_val'>85</text>
+            <text class='yuan'>元</text>
+          </view>
+          <view class='lowest_price_brand price_brand'>
+            <text>V88</text>
+          </view>
+      </view>
+
+      <view class='average_price_container price_container'>
+          <view class='avearge_title price_title'>
+            <text>平均价</text>
+          </view>
+          <view class='average_price price_value'>
+             <text class='price_val'>105</text>
+             <text class='yuan'>元</text>
+          </view>
+          <view class='average_price_brand price_brand'>
+            <text>2个品牌</text>
+          </view>
+      </view>
+
+  </view>
+
+  <view class='bottom_container'>
+    <view class='bottom_left' bindtouchstart='changeLeftArrowImgSrc' bindtouchend='changeLeftArrowImgSrc'>
+      <image class='chart_arrow' src='{{bottomLeftArrowSrc}}'></image>
+    </view>
+    <view class='bottom_center'>
+      <image class='chart' src='/images/chart.png'></image>
+    </view>
+    <view class='bottom_right' bindtouchstart='changeRightArrowImgSrc' bindtouchend='changeRightArrowImgSrc'>
+      <image class='chart_arrow' src='{{bottomRightArrowSrc}}'></image>
+    </view>
+  </view>
+</view>

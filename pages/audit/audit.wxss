@@ -1,0 +1,45 @@
+/* pages/audit/audit.wxss */
+@import '../../templates/operation_page/common_wxss/operation_page.wxss';
+@import '../../templates/operation_page/filter_container_picker/filter_picker.wxss';
+@import '../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxss';
+@import '../../templates/operation_page/center_container_scroll_view/center_container_scroll_view.wxss';
+
+view#audition_center_container scroll-view{
+  flex-basis: 90%;
+  max-height: 1050rpx;
+}
+
+
+
+view.submit_info{
+  font-size: 25rpx;
+}
+
+view.submit_person_time{
+  color: #a09e9e;
+}
+
+view#audition_center_container scroll-view.audit_content{
+  width: 98%;
+  margin-top: 10rpx;
+  max-height: 130rpx;
+}
+
+image.pitaya_type{
+  width: 25rpx;
+  height: 25rpx;
+}
+
+view.scroll_item_center view.pitaya_type_container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+view.scroll_item_center view.pitaya_type_container text{
+  font-size: 25rpx;
+}
+
+view.produce_plan{
+  display: flex;
+}

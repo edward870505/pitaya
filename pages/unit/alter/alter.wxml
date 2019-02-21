@@ -1,0 +1,22 @@
+<!--pages/unit/alter/alter.wxml-->
+<import src='../../../templates/alter_item_page/top_container_title/alter_title.wxml'/>
+<import src='../../../templates/alter_item_page/bottom_container_scroll_view_form/alter_form.wxml'/>
+<view class='outter_container'>
+  <view class='top_container'>
+    <template is='title' data='{{imgSrc:title.imgSrc,text:title.text}}'></template>
+  </view>
+  <view class='center_container'>
+
+  </view>
+  <view class='bottom_container'>
+    <scroll-view scroll-y>
+      <form bindsubmit='onAlterFormSubmit'>
+        <template is='alter_form_section' wx:for='{{formSections}}' data='{{name:item.name,value:item.value,range:pickerRange.types,index:index,areaUnit:item.areaUnit,placeholder:item.inputPlaceHolder,inputType:item.inputType,imgSrc:item.imgSrc,text:item.text}}'></template>
+        <view class='alter_section_btn'>
+            <button form-type='submit' plain>提交</button>
+        </view>
+      </form>
+    </scroll-view>
+  </view>
+</view>
+

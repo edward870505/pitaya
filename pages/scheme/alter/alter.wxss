@@ -1,0 +1,26 @@
+/* pages/scheme/alter/alter.wxss */
+@import '../../../templates/alter_item_page/common.wxss';
+@import '../../../templates/alter_item_page/top_container_title/alter_title.wxss';
+@import '../../../templates/alter_item_page/bottom_container_scroll_view_form/alter_form.wxss';
+
+view.scheme_container_bottom{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#5a5959;
+  padding:20rpx;
+  border:1px solid #8f8f8f;
+
+}
+
+
+view.scheme_container_bottom_hover{
+  background-color: #e9e9e9;
+  color: white;
+}
+
+.alter_section_right .placeholder{
+  color: gray;
+  font-size: 30rpx;
+  font-weight: 600;
+}

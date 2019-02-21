@@ -1,0 +1,14 @@
+/* pages/farming/farming.wxss */
+@import '../../templates/operation_page/common_wxss/operation_page.wxss';
+@import '../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxss';
+@import '../../templates/operation_page/center_container_scroll_view/center_container_scroll_view.wxss';
+@import '../../templates/operation_page/filter_container_picker/filter_picker.wxss';
+view#material{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+view#material image{
+  width: 30rpx;
+  height: 30rpx;
+}

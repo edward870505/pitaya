@@ -1,0 +1,339 @@
+/* pages/farmdiary/farmdiary.wxss */
+@import '../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxss';
+view.outter_container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+
+
+view.top_container{
+  flex-basis: 12%;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+
+view.border{
+  flex-basis: 2%;
+  background-color: #eeeeee;
+  width: 100%;
+}
+
+
+
+view.diary_container{
+  margin-top:25rpx;
+  width: 95%;
+  flex-basis: 80%;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15rpx;
+}
+
+view.diary_container view.top{
+  flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+view.diary_container view.top .top_container,
+view.diary_container view.top .bottom_container{
+  display: flex;
+  border-bottom:1px solid; 
+}
+
+view.diary_container view.top .top_container{
+  flex-basis: 40%;
+}
+
+view.diary_container view.top .bottom_container{
+  flex-basis: 25%;
+}
+
+view.diary_container view.top .farming_table_title{
+  flex-basis: 20%;
+  display: flex;
+  border-bottom: 1px solid;
+}
+
+view.diary_container view.top .farming_table_title.no-records{
+  border-bottom: 1px solid;
+}
+
+view.diary_container view.top .farming_table_title view{
+  font-size: 28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.diary_container view.top .farming_table_title view.title-beginDate{
+  flex-basis: 20%;
+  border-right: 1px solid;
+}
+
+view.diary_container view.top .farming_table_title view.title-period{
+  flex-basis: 20%;
+  border-right: 1px solid;
+}
+
+view.diary_container view.top .farming_table_title view.title-farming{
+  flex-basis: 20%;
+  border-right: 1px solid;
+}
+
+view.diary_container view.top .farming_table_title view.title-teams{
+  flex-basis: 20%;
+  border-right: 1px solid;
+}
+
+view.diary_container view.top .farming_table_title view.title-finishedDate{
+  flex-basis: 20%;
+}
+
+view.diary_container view.top .period_container .label{
+  flex-basis: 18%;
+  border-right: 1px solid;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+view.diary_container view.top .period_container .content{
+    flex-basis: 82%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+view.diary_container view.top .top_container .label,
+view.diary_container view.top .bottom_container .label{
+  flex-basis: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35rpx;
+}
+
+view.diary_container view.top .top_container .content,
+view.diary_container view.top .bottom_container .content{
+  flex-basis: 32%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.diary_container view.top .top_container #date{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15rpx;
+}
+
+view.diary_container view.top .top_container #date text{
+  font-size: 25rpx;
+}
+
+view.diary_container view.top .bottom_container #field{
+  flex-basis: 82%;
+  border-right: none;
+}
+
+view.diary_container view.top .top_container .content picker,
+view.diary_container view.top .bottom_container .content picker{
+  border-bottom: 1px solid;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  font-size: 35rpx;
+}
+
+view.diary_container view.top .top_container .content picker.begin{
+  margin-bottom: 5rpx;
+}
+
+view.diary_container view.top .top_container .content picker.begin,
+view.diary_container view.top .top_container .content picker.end{
+  padding-bottom: 5rpx;
+}
+
+view.diary_container view.top .top_container .content.left,
+view.diary_container view.top .bottom_container .content.left
+{
+  border-left:1px solid;
+  border-right:1px solid; 
+}
+
+view.diary_container view.top .top_container .content.right,
+view.diary_container view.top .bottom_container .content.right{
+  border-left: 1px solid;
+}
+
+view.diary_container view.top .bottom_container .content.right{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+view.diary_container view.top .bottom_container .content.right view.charge-top,
+view.diary_container view.top .bottom_container .content.right view.charge-bottom{
+  flex-basis: 50%;
+  display: flex;
+}
+view.diary_container view.top .bottom_container .content.right view.charge-top{
+  border-bottom: 1px solid;
+}
+
+view.diary_container view.top .bottom_container .content.right view.charge-top .charge-label,
+view.diary_container view.top .bottom_container .content.right view.charge-bottom .charge-label{
+  flex-basis: 40%;
+  border-right:1px solid;
+  font-size: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+view.diary_container view.top .bottom_container .content.right view.charge-top .charge-content,
+view.diary_container view.top .bottom_container .content.right view.charge-bottom .charge-content{
+  flex-basis: 60%;
+  font-size: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
+
+view.diary_container view.center{
+  flex-basis: 60%;
+}
+
+view.diary_container view.center scroll-view{
+  max-height: 600rpx;
+}
+
+
+
+view.dairy_section{
+  width: 100%;
+  height: 100rpx;
+  border-bottom:1px solid; 
+  display: flex;
+}
+
+view.dairy_section view{
+  font-size: 23rpx;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  border-right: 1px solid;
+  color: rgb(53, 53, 53);
+}
+
+view.dairy_section.finished view text{
+  color:#0dc44e;
+}
+view.dairy_section view.team_record{
+  border-right:none;
+}
+
+view.dairy_section view:last-child{
+  border-right: none;
+}
+
+view.dairy_section view.item-beginDate{
+  flex-basis: 20%;
+}
+
+view.dairy_section view.item-period{
+  flex-basis: 20%;
+}
+
+view.dairy_section view.item-farming{
+  flex-basis: 20%;
+}
+
+view.dairy_section view.item-teams{
+  flex-basis: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+view.dairy_section view.item-finishedDate{
+  flex-basis: 20%;
+}
+
+
+view.dairy_section .dairy_date{
+  flex-basis: 25%;
+  border-right:1px solid;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+view.dairy_section .dairy_item{
+  flex-basis: 20%;
+  border-right:1px solid;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+view.dairy_section .dairy_content{
+  flex-basis: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+}
+
+view.dairy_section .dairy_content view
+{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 35rpx;
+  padding-left: 5rpx;
+}
+
+view.dairy_section:last-child{
+  border-bottom: none;
+
+}
+
+view.dairy_section:first-child{
+  border-bottom:1px solid; 
+}
+
+view.diary_container view.bottom{
+  flex-basis: 0%;
+}
+
+view.top view.head_title{
+  flex-basis: 15%;
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: center;
+  border-bottom: 1px solid;
+}
+
+
+
+
+
+
+

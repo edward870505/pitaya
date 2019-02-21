@@ -1,0 +1,147 @@
+view.outter_container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+view.top_container{
+  flex-basis: 15%;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+  box-shadow: 0rpx 5rpx 30rpx #d9d9d9;
+  margin-bottom: 65rpx;
+}
+
+view.center_container{
+  flex-basis: 25%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+
+}
+
+view.price_container{
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+
+view.price_container view.price_title{
+  flex-basis: 20%;
+  display: flex;
+  justify-content: center;
+  color: #6b6b6b;
+}
+
+view.price_container view.price_brand{
+  flex-basis: 20%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 3px solid #6b6b6b;
+  color:#0dc44e;
+}
+
+view.price_container view.price_value{
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(216, 83, 83);
+}
+
+view.price_container view.price_value text.price_val{
+  font-size: 65rpx;
+  font-weight: bold;
+}
+
+view.price_container view.price_value text.yuan{
+  font-size: 25rpx;
+  margin-left: 5rpx;
+}
+
+view.price_container view.price_title text{
+  font-size: 50rpx;
+  font-weight: 600;
+}
+
+view.bottom_container{
+  flex-basis: 60%;
+  display: flex;
+  margin-top: 20rpx;
+  justify-content: space-around;
+}
+
+view.bottom_left{
+  flex-basis: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.bottom_left image{
+  padding-left: 15rpx;
+}
+
+view.bottom_right image{
+  padding-right:15rpx;
+}
+
+view.bottom_center{
+  flex-basis: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gainsboro;
+}
+
+view.bottom_right{
+  flex-basis: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+image.fruit_title_avatar{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100rpx;
+  padding: 15rpx; 
+  box-shadow: 2rpx 2rpx 5rpx #c4c4c4;
+  border: 1rpx solid #d9d9d9;
+}
+
+text.fruit_name{
+  font-size: 55rpx;
+  font-weight: bold;
+  margin-left: 20rpx;
+  color: #6b6b6b;
+}
+
+picker.classification_picker{
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 35rpx;
+}
+
+ image.down_arrow{
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+image.chart_arrow{
+  width: 70rpx;
+  height: 70rpx;
+}
+
+image.chart{
+  height: 120rpx;
+  width: 120rpx;
+}

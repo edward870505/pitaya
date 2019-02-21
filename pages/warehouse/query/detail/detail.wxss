@@ -1,0 +1,243 @@
+/* pages/warehouse/query/detail/detail.wxss */
+page{
+  display: flex;
+  justify-content: center;
+}
+
+view.outter{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  height: 99%;
+  border: 1px solid #8b8a8a;
+}
+
+view.outter .top{
+  flex-basis: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px dashed;
+  flex-direction: column;
+ 
+}
+
+view.outter .top text.title{
+  font-size: 30rpx;
+}
+
+view.outter .top text.daterange{
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #7a7a7a;
+}
+
+
+view.outter .center{
+  flex-basis: 94%;
+  display: flex;
+  flex-direction: column;
+}
+
+view.outter .bottom{
+  flex-basis: 0%;
+}
+
+view.outter .center .table_head{
+  flex-basis: 8%;
+  display: flex;
+  border-bottom: 1px solid;
+  background-color: #dbdbdb;
+}
+
+view.outter .center .table_head view{
+  font-size: 25rpx;
+  border-right:1px dashed; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+view.outter .center .table_head view:last-child{
+  border-right: none;
+}
+
+view.outter .center .table_head .date{
+  flex-basis: 22%;
+}
+
+view.outter .center .table_head .in_out{
+  flex-basis: 22%;
+}
+
+view.outter .center .table_head .amount{
+  flex-basis: 24%;
+}
+
+view.outter .center .table_head .unit{
+  flex-basis: 8%;
+}
+
+view.outter .center .table_head .price{
+  flex-basis: 22%;
+}
+
+
+view.outter .center .table_body{
+  flex-basis: 92%;
+  display: flex;
+  flex-direction: column;
+}
+
+view.outter .center .table_body .initial{
+  flex-basis: 8%;
+  display: flex;
+  border-bottom:1px solid;
+  background-color: whitesmoke;
+}
+
+view.outter .center .table_body .records{
+
+}
+
+view.outter .center .table_body .records scroll-view{
+  width:100%;
+  max-height: 850rpx;
+  
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item{
+  width: 100%;
+  height: 90rpx;
+  border-bottom: 1px solid; 
+  display: flex;
+}
+
+.scroll_item.out view text{
+  color: rgb(228, 67, 67);
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item:last-child{
+  border-bottom: none;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item view{
+  font-size: 20rpx;
+  border-right:1px dashed; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item view:last-child{
+  border-right: none;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item .date{
+  flex-basis: 22%;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item .in_out{
+  flex-basis: 22%;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item .amount{
+  flex-basis: 24%;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item .unit{
+  flex-basis: 8%;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item .price{
+  flex-basis: 22%;
+}
+
+
+view.outter .center .table_body .ending{
+  flex-basis: 8%;
+  display: flex;
+  border-top:1px solid;
+  background-color: whitesmoke;
+}
+
+view.outter .center .table_body .initial view{
+  border-right: 1px dashed;
+  font-weight: bold;
+}
+
+view.outter .center .table_body .initial view:last-child{
+  border-right: none;
+}
+
+
+
+view.outter .center .table_body .initial .date{
+  flex-basis: 22%;
+}
+
+view.outter .center .table_body .initial .in_out{
+  flex-basis: 22%;
+  font-size: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.outter .center .table_body .initial .amount{
+  flex-basis: 24%;
+}
+
+view.outter .center .table_body .initial .unit{
+  flex-basis: 8%;
+}
+
+view.outter .center .table_body .initial .price{
+  flex-basis: 22%;
+}
+
+
+view.outter .center .table_body .ending view{
+  border-right: 1px dashed;
+  font-weight: bold;
+}
+
+view.outter .center .table_body .ending view:last-child{
+  border-right: none;
+}
+
+
+
+view.outter .center .table_body .ending .date{
+  flex-basis: 22%;
+}
+
+view.outter .center .table_body .ending .in_out{
+  flex-basis: 22%;
+  font-size: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+view.outter .center .table_body .ending .amount{
+  flex-basis: 24%;
+}
+
+view.outter .center .table_body .ending .unit{
+  flex-basis: 8%;
+}
+
+view.outter .center .table_body .ending .price{
+  flex-basis: 22%;
+}
+
+view.outter .center .table_body .records{
+  flex-basis: 84%;
+}
+
+
+
+

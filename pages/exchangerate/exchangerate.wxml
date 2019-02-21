@@ -1,0 +1,37 @@
+<!--pages/exchangerate/exchangerate.wxml-->
+<!--引入模板-->
+<import src='../../templates/operation_page/center_container_scroll_view/center_container_scroll_view.wxml'/>
+<import src='../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxml'/>
+<import src='../../templates/operation_page/filter_container_picker/filter_picker.wxml'/>
+<!--引入模板-->
+
+
+<view class='outter_container'>
+  <!--顶部筛选框-->
+  <view class='filter_container'>
+      <view>
+        <template is='filter' data='{{range:filterData.range,imgSrc:filterData.imgSrc,text:filterData.text}}'></template>
+      </view>
+  </view>
+    <!--顶部筛选框-->
+
+<!--头部操作按钮-->
+  <view class='top_container'>
+    <scroll-view scroll-x>
+      <template is='operations_bar' wx:for='{{operations}}' data='{{imgSrc:item.imgSrc,text:item.text,action:item.action}}'></template>
+    </scroll-view>
+  </view>
+  <!--头部操作按钮-->
+
+ <!--中部基础信息数据-->
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <template is='dataset_item' wx:for='{{dataset}}' data='{{show:item.show,initText:filterData.initText,text:filterData.text,approval:item.approval,imgSrc:itemImgSrc,itemName:itemName,origin:item.origin,target:item.target,rate:item.rate,status:item.status,index:index,switch:user.authorities.operation.basicinfo.exchangerate.switch,alter:user.authorities.operation.basicinfo.exchangerate.alter,delete:user.authorities.operation.basicinfo.exchangerate.delete}}'>
+      </template>
+    </scroll-view>
+  </view>
+   <!--中部基础信息数据-->
+  <view class='bottom_container'></view>
+</view>
+
+

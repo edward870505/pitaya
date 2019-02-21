@@ -1,0 +1,19 @@
+/* pages/farmdiary/add/add.wxss */
+@import '../../../templates/add_item_page/common.wxss';
+@import '../../../templates/add_item_page/center_container_form/center_container_form.wxss';
+view.scheme_content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+  padding-top:10rpx;
+}
+
+view.scheme_content view{
+  text-overflow: ellipsis;
+  overflow:hidden;
+  white-space: nowrap;
+  max-width: 95%;
+ 
+}
+

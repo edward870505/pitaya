@@ -1,0 +1,10 @@
+<!--templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxml-->
+<template  name='operations_bar'>
+
+      <view class='scroll_item' bindtap='onOperationItemTap' data-action='{{action}}'>
+        <image class='scroll_item_img' src='{{imgSrc}}'></image>
+        <text class='scroll_item_title'>{{text}}</text>
+      </view>
+
+</template>
+

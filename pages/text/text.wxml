@@ -1,0 +1,7 @@
+<!--pages/text/text.wxml-->
+<scroll-view scroll-x='true'>
+  <view class='scroll_item'></view>
+  <view class='scroll_item'></view>
+  <view class='scroll_item'></view>
+  <view class='scroll_item'></view>
+</scroll-view>

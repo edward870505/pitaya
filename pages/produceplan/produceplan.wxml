@@ -1,0 +1,103 @@
+<!--pages/produceplan/produceplan.wxml-->
+<import src='../../templates/operation_page/filter_container_picker/filter_picker.wxml'/>
+<view class='outter_container'>
+
+  <view class='timeline_container'>
+    <view class='timeline_container_filter'>
+     <view>
+        <template is='filter' data='{{range:filterData.range,text:filterData.text,imgSrc:filterData.imgSrc}}'></template>
+      </view>
+    </view>
+    <view class='timeline_container_top'>
+      <view class='timeline_container_top_left'>
+        <image class='filter' src='{{datePickerImgSrc}}'></image>
+      </view>
+      <view class='timeline_container_top_right'>
+        <view id='beginDate'>
+          <picker mode='date' data-name='beginDate' bindchange='onTimePickerValueChanged'>{{datePicker.beginDatePickerText}}</picker>
+        </view>
+        <view id='text'>
+          <text>到</text>
+        </view>
+        <view id='endDate'>
+          <picker mode='date' data-name='endDate' bindchange='onTimePickerValueChanged'>{{datePicker.endDatePickerText}}</picker>
+        </view>
+      </view>
+    </view>
+    <view class='timeline_container_center'>
+    
+      <scroll-view scroll-x>
+        <block wx:for='{{operations}}'>
+          <view class='scroll-item'  bindtap='onOperationBtnTap' data-action='{{item.action}}'>
+            <image src='{{item.imgSrc}}'></image>
+            <text>{{item.text}}</text>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class='timeline_container_date'>
+      <view class='today'>
+      {{today}}
+      </view>
+    </view>
+    <view class='timeline_container_bottom'>
+      <scroll-view scroll-y>
+      <block wx:for='{{planSections}}'>
+        <picker wx:if='{{item.approval&&((item.finishedDatePlanMs-datePicker.beginDateMs)>=0) && ((item.finishedDatePlanMs-datePicker.endDateMs)<=0)}}' range='{{pickerOperations}}' range-key='text' bindchange='onPlanItemPickerValueChanged' data-index='{{index}}'>
+          <view class='timeline_block' data-index='{{index}}'>
+            <view class='timeline_block_left'>
+              <view class='timeline_block_left_left plan_time_info'>
+                <view class='text_plan_time'>计划时间</view>
+                <view class='plan_date'>{{item.finishedDatePlan}}</view>
+              </view>
+              <view class='timeline_block_left_center'>
+                <view class='timeline_block_left_center_top'>
+                  <view class='line'></view>
+                </view>
+                <view class='timeline_block_left_center_center {{item.status}}'  >
+                  <image class='circle' src='{{imgSrc[item.status]}}'>
+                  </image>
+                </view>
+                <view class='timeline_block_left_center_bottom'>
+                  <view class='line'></view>
+                </view>
+              </view>
+              <view class='timeline_block_left_right'>
+                <view class='nodename'>{{item.node}}</view>
+              </view>
+            </view>
+            <view class='timeline_block_right finished_plan_info'>
+
+              <block wx:if='{{item.finished}}'>
+                <view class='text_finished_time'>完成时间</view>
+                <view class='date_finished_time'>{{item.finishedDate}}</view>
+                <view wx:if='{{item.daysAfterCompleted>=0}}' class='ontime'>已完成[提前{{item.daysAfterCompleted}}天]</view>
+                <view wx:if='{{item.daysAfterCompleted<0}}' class='delay'>已完成[延迟{{-item.daysAfterCompleted}}天]</view>
+              </block>
+
+              
+              <block wx:if='{{!item.finished}}'>
+                  <view wx:if='{{item.outdated}}'>未完成[过期{{item.daysLeft}}天]</view>
+
+                  <view wx:if='{{!item.outdated}}'>未完成[剩余{{item.daysLeft}}天]</view>
+              </block>
+
+
+            </view>
+          </view>
+        </picker>
+        <view wx:if='{{ item.approval && item.showTimelineBlock && ((item.finishedDatePlanMs-datePicker.beginDateMs)>=0) && ((item.finishedDatePlanMs-datePicker.endDateMs)<=0)}}' class='timeline_block_mark' data-index='index'>
+            <view class='timeline_block_mark_left'>
+              <view class='timeline_block_mark_left-left'></view>
+              <view class='timeline_block_mark_left-center'>
+                <image class='{{item.imgClass}}' data-index='{{index}}' src='{{item.imgSrc}}'></image>
+              </view>
+              <view class='timeline_block_mark_left-right'></view>
+            </view>
+            <view class='timeline_block_mark_right'></view>
+        </view>
+      </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>

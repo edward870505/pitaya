@@ -1,0 +1,52 @@
+<import src='../../../templates/add_item_page/center_container_form/center_container_form.wxml'/>
+<view class='outter_container'>
+  <view class='top_container'></view>
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <form bindsubmit='onAddItemFormSubmit'>
+        <template is='form_section'  wx:for='{{formSections}}' data='{{name:item.name,initPickerText:item.initPickerText,imgSrc:item.imgSrc,text:item.text,placeholder:item.inputPlaceHolder,inputType:item.inputType,unitInput:item.unitInput,unitInputType:item.unitInputType,index:index,farmsRange:pickerRange.farms,amountUnitsRange:pickerRange.weightUnits,gradesRange:pickerRange.grades,nodesRange:pickerRange.nodes}}'></template>
+        <!--品种Section-->
+        <view style="display:{{(dataset.node.value=='摘果')?'flex':'none'}};" class='species_container'>
+          <view class='species_container_top'>
+              <view class='species_container_top_left'>
+                <image class='species_img' src="{{totalProduction.imgSrc}}"></image>
+              </view>
+              <view class='species_container_top_center'>
+                <text class='species_text'>{{totalProduction.text}}</text>
+              </view>
+              <view class='species_container_top_right'>
+                <input type='digit' bindblur='onInputBlur' value='{{totalProduction.value}}' data-index='{{index}}' data-key='totalProduction' data-name='totalProduction' placeholder='{{totalProduction.inputPlaceHolder}}' placeholder-class='placeholder'></input>
+                <picker bindchange='onPickerValueChanged' range='{{pickerRange.weightUnits}}' data-index='{{index}}' data-key='totalProduction' data-name='amountUnit'><text>{{totalProduction.pickerText}}</text><image src='/images/down.png'></image></picker>
+              </view>
+           </view>
+           <view wx:for='{{otherFormSections}}' class='species_container_top'>
+              <view class='species_container_top_left'>
+                <image class='species_img' src='{{customedFormSectionItem.imgSrc}}'></image>
+              </view>
+              <view class='species_container_top_center'>
+                <text class='species_text'>{{customedFormSectionItem.text}}</text>
+              </view>
+              <view class='species_container_top_right'>
+                <picker bindchange='onPickerValueChanged' range='{{pickerRange.grades}}' range-key='gradeName' data-index='{{index}}' data-key='gradeName' data-name='gradeName'><text>{{item.gradeName}}</text><image src='/images/down.png'></image></picker>
+                <input type='digit' bindblur='onInputBlur' value='{{item.gradeProduction}}' data-index='{{index}}' data-key='gradeProduction' data-name='gradeProduction' placeholder='请输入预测产量' placeholder-class='placeholder'></input>
+                <input disabled value='{{customedFormSectionItem.productionUnit}}' data-index='{{index}}' data-key='predictionUnit' data-name='predictionUnit' placeholder-class='placeholder'></input>
+              </view>
+           </view>
+           <view class='species_container_bottom' hover-class='species_container_bottom_hover' bindtap='onAddCustomedFormSectionBtnTap'>
+              <text class='add_species_text'>添加产量预测</text>
+           </view>
+        </view>
+        <!--品种Section-->
+      <view class='btnGroup'>
+          <button form-type='submit' plain>提交</button>
+        </view>
+      </form>
+    </scroll-view>
+  </view>
+  <view class='bottom_center'></view>
+</view>
+<view class='container'>
+  <dialog >
+  </dialog>
+</view>
+

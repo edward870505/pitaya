@@ -1,0 +1,153 @@
+<template name='form_section'>
+  <view class='section'>
+      <view class='section_left'>
+          <image class='section_img' src='{{imgSrc}}'></image>
+      </view>
+      <view class='section_center'>
+        <text class='section_text'>{{text}}</text>
+      </view>
+      <view class='section_right'>
+        <view class='section_input'>
+          <view class='section_input_top'>
+
+           <!--普通picker-->
+            <picker wx:if='{{inputType === "picker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{range}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--普通picker-->
+
+            <!--普通picker-->
+            <picker wx:if='{{inputType === "commonpicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{pickerRange[rangeKey]}}' range-key='{{range_key}}' bindtap='onCommonPickerTap'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--普通picker-->
+
+           <!--等级picker-->
+            <picker wx:if='{{inputType === "gradepicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{gradesRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--等级picker-->
+
+            <!--流程picker-->
+            <picker wx:if='{{inputType === "nodepicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{nodesRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--流程picker-->
+
+            <!--时间picker-->
+            <picker wx:if='{{inputType === "datepicker"}}' mode='date' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--时间picker-->
+
+           <!--公司picker-->
+            <picker wx:if='{{inputType === "companypicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{companyRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--公司picker-->
+
+           <!--所属地picker-->
+            <picker wx:if='{{inputType === "placepicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{placeRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--所属地picker-->
+
+          <!--农场picker-->
+            <picker wx:if='{{inputType === "farmingpicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{farmingRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--农场picker-->
+
+           <!--单位picker-->
+            <picker wx:if='{{inputType === "unitPicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{unitsRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--单位picker-->
+
+           <!--转换picker-->
+            <picker wx:if='{{inputType === "transferPicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{transfersRange}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--转换picker-->
+
+
+           <!--sex picker-->
+            <picker wx:if='{{inputType === "sexpicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{range}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--sex picker-->
+
+            <!--物资父类picker-->
+            <picker wx:if='{{inputType === "materialpicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{range}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--物资父类picker-->
+
+            <!--农场picker-->
+            <picker wx:if='{{inputType === "farmpicker"}}' bindchange='onPickerValueChanged' range='{{farmsRange}}' value='{{value}}' data-key='{{name}}' data-name='{{name}}' name='{{name}}' data-index='{{index}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+            <!--农场picker-->
+
+
+           <!--Grade Multiselector-->
+           <block wx:if='{{itemName==="grade"}}'>
+            <picker wx:if='{{inputType === "multiselector"}}' data-key='{{name}}' data-name='{{name}}' value='{{value}}'  bindchange='onPickerValueChanged' mode='multiSelector' range='{{gradeRange}}' name='{{name}}' data-index='{{index}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           </block>
+           <!--Grade Multiselector-->
+
+            <!--普通时间picker-->
+            <picker wx:if='{{inputType === "timepicker"}}'  value='{{value}}'  data-emptycheck='{{!canItBeEmpty}}' mode='date' bindchange='onPickerValueChanged' data-index='{{index}}' range='{{}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+             <!--普通时间picker-->
+
+            <!--普通input-->
+            <input bindblur='onInputBlur' wx:if='{{inputType==="input"}}' value='{{value}}' data-key='{{name}}' data-name='{{name}}' name='{{name}}' placeholder='{{placeholder}}' placeholder-class='placeholder' data-index='{{index}}'></input>
+             <!--普通input-->
+
+             <!--普通数字input-->
+            <input wx:if='{{inputType==="number"}}' type='digit' bindblur='onInputBlur'  value='{{value}}' data-key='{{name}}' data-name='{{name}}' name='{{name}}' placeholder='{{placeholder}}' placeholder-class='placeholder' data-index='{{index}}'></input>
+             <!--普通数字input-->
+
+            <!--process input-->
+            <input wx:if='{{inputType==="processinput"}}' placeholder='{{placeholder}}' placeholder-class='placeholder' data-index='{{index}}' disabled></input>
+            <!--process input-->
+            <!--金额 input-->
+            <input wx:if='{{inputType==="totalVNDinput"}}' class='totalinput' value='{{dataset.totalVND}}' placeholder='总金额(越南盾)' data-index='{{index}}' disabled></input>
+            <!--金额 input-->
+            
+            <!--普通 textarea-->
+            <textarea wx:if='{{inputType==="textarea"}}' data-key='{{name}}' data-name='{{name}}' placeholder='{{placeholder}}' placeholder-class='placeholder' data-index='{{index}}' bindblur='onInputBlur' value='{{value}}' disabled='{{inputDisabled}}'></textarea>
+            <!--picker textarea-->
+            <!--picker textarea-->
+            <textarea wx:if='{{inputType==="pickertextarea"}}' data-key='{{name}}' data-name='{{name}}' placeholder='{{placeholder}}' placeholder-class='placeholder' data-index='{{index}}' bindblur='onInputBlur' value='{{value}}' disabled='{{inputDisabled}}' bindtap='onTextareaTap'></textarea>
+            <!--普通 textarea-->
+            <block wx:if='{{itemName=="farmdiary" && inputType=="radiopicker"}}'>
+              <input data-name='{{name}}' data-key='{{name}}' data-index='{{index}}' wx:if='{{placeholder=="请输入地块"||placeholder=="请输入小组"}}' value='{{placeholder}}' disabled bindtap='onRadioPickerTap'></input>
+              <block wx:else>
+                <view wx:for='{{placeholder}}'>
+                  <view class='checkbox_item'>{{item}}</view>
+                </view>
+              </block>
+            </block>
+          </view>
+          <!--表单输入框区域底部模板
+            ** 一般是单位picker
+          -->
+          <view class='section_input_bottom' wx:if='{{unitInput===true}}'>
+            <block wx:if='{{action == "materialIn" && name == "amount" }}'>
+              <input value='{{dataset.sub_material.mainUnit}}' disabled></input>
+              <input value='{{dataset.subAmount}}' disabled></input>
+              <input value='{{dataset.sub_material.subUnit}}' disabled></input>
+            </block>
+            <picker wx:if='{{unitInputType==="area"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-index='{{index}}' data-name='fieldAreaUnit' range='{{areaUnitsRange}}'><text>{{initPickerText}}</text><image src='/images/down.png'></image></picker>
+
+            <picker wx:if='{{unitInputType==="field"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-index='{{index}}' data-name='teamfield' range='{{fieldsRange}}'><text>{{initPickerText}}</text><image src='/images/down.png'></image></picker>
+
+            <picker data-index='{{index}}' wx:if='{{unitInputType==="amount"}}' bindchange='onPickerValueChanged' data-name='amountUnit' data-key='{{name}}' range='{{amountUnitsRange}}'><text>{{initPickerText}}</text><image src='/images/down.png'></image></picker>
+
+            <picker wx:if='{{unitInputType==="exchange"}}' range-key='{{range_key}}' range='{{pickerRange[rangeKey]}}' data-name='{{name}}' data-key='{{name}}' data-index='{{index}}' bindchange='onPickerValueChanged'><text class='exchangerate'>{{initPickerText}}</text><image src='/images/down.png'></image></picker>
+
+            <!--普通picker-->
+            <picker wx:if='{{unitInputType === "unitsPicker"}}' bindchange='onPickerValueChanged' data-key='unit' data-name='{{name}}' data-index='{{index}}' range='{{pickerRange[rangeKey]}}' range-key='{{range_key}}'><text>{{initPickerText}}</text><image src='/images/down.png'></image></picker>
+           <!--普通picker-->
+
+            <input class='exchangeinput' disabled data-index='{{index}}' wx:if='{{unitInputType==="exchange"}}' value='{{dataset.priceRMB}}' placeholder='人民币单价'></input>
+
+            <block wx:if='{{unitInputType=="contenttextarea"}}'>
+              <view class='scheme_content'>
+                <block wx:if='{{initPickerText!="方案内容"}}' wx:for='{{initPickerText[0]}}'>
+                  <view>{{index+1}}：{{item.material}}[{{item.totalAmount}}{{item.amountUnit}}]</view>
+                </block>
+                <block wx:if='{{initPickerText!="方案内容"}}'>
+                  <view><text>内容：{{initPickerText[1]}}</text></view>
+                </block>
+              </view>
+            </block>
+
+            <!--金额 input-->
+            <input wx:if='{{unitInputType==="totalRMBinput"}}' class='totalinput' placeholder='总金额(人民币)' data-index='{{index}}' disabled value='{{dataset.totalRMB}}'></input>
+            <!--金额 input-->
+
+            <!--普通picker-->
+            <picker wx:if='{{inputType === "warehousepicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{pickerRange[rangeKey]}}' range-key='{{range_key}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+           <!--普通picker-->
+          </view>
+      </view>
+    </view>
+  </view>
+</template>
+

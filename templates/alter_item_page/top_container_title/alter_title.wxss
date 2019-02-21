@@ -1,0 +1,13 @@
+/* templates/alter_item_page/top_container_title/alter_title.wxss */
+image.alter_title_img{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+text.alter_title_text{
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 40rpx;
+}

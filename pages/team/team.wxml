@@ -1,0 +1,35 @@
+<!--pages/team/team.wxml-->
+<!--引入模板-->
+<import src='../../templates/operation_page/filter_container_picker/filter_picker.wxml'/>
+<import src='../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxml'/>
+<import src='../../templates/operation_page/center_container_scroll_view/center_container_scroll_view.wxml'/>
+
+<view class='outter_container'>
+  <!--顶部筛选框-->
+  <view class='filter_container'>
+    <view>
+      <template is='filter' data='{{itemName:itemName,range:filterData.range,imgSrc:filterData.imgSrc,text:filterData.text}}'></template>
+    </view>
+  </view>
+  <!--顶部筛选框-->
+
+  <!--头部操作按钮-->
+  <view class='top_container'>
+    <scroll-view scroll-x>
+      <template is='operations_bar' wx:for='{{operations}}' data='{{imgSrc:item.imgSrc,text:item.text,action:item.action}}'></template>
+    </scroll-view>
+  </view>
+  <!--头部操作按钮-->
+
+  
+  <!--中部基础信息数据-->
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <template is='dataset_item' wx:for='{{dataset}}' data='{{docid:item._id,approval:item.approval,initText:filterData.initText,text:filterData.text,index:index,teamindex:index,imgSrc:itemImgSrc,farm:item.farm,fieldserial:item.fieldSerial,status:item.status,name:item.name,teamnumer:item.serial,members:item.members,itemName:itemName,memberImg:memberImgSrc,switch:user.authorities.operation.basicinfo.team.switch,alter:user.authorities.operation.basicinfo.team.alter,delete:user.authorities.operation.basicinfo.team.delete,addTeamMember:user.authorities.operation.basicinfo.team.addTeamMember}}'>
+      </template>
+    </scroll-view>
+  </view>
+  <view class='bottom_center'>
+  
+  </view>
+</view>

@@ -1,0 +1,20 @@
+/* pages/farmdiary/alter/alter.wxss */
+@import '../../../templates/alter_item_page/common.wxss';
+@import '../../../templates/alter_item_page/top_container_title/alter_title.wxss';
+@import '../../../templates/alter_item_page/bottom_container_scroll_view_form/alter_form.wxss';
+
+view.scheme_content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 20rpx;
+  padding-top:10rpx;
+}
+
+view.scheme_content view{
+  text-overflow: ellipsis;
+  overflow:hidden;
+  white-space: nowrap;
+  max-width: 95%;
+ 
+}

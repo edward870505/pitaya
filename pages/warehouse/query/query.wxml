@@ -1,0 +1,258 @@
+<!--pages/warehouse/query/query.wxml-->
+<view class='outter'>
+  <view class='top'>
+    <text>{{warehouse.name}}仓库出入库明细</text>
+  </view>
+  <view class='center'>
+    <!--物质筛选输入框外部容器-->
+    <view class='left'>
+       <!--物质筛选输入框内部容器-->
+      <view>
+        <input placeholder-class='placeholder' placeholder='输入物资名称'>
+        </input>
+      </view>
+
+    </view>
+    <!--时间范围容器-->
+    <view class='right'>
+       <!--开始月份容器-->
+      <view class='begin'>
+          <!--开始月份选择器-->
+          <picker>
+            <text>开始月份</text>
+          </picker>
+      </view>
+      <!--开始月份容器-->
+
+      <!--文字'到'-->
+      <text class='to'>到</text>
+
+      <!--结束日期容器-->
+      <view class='end'>
+          <!--结束日期选择器-->
+          <picker>
+            <text>结束日期</text>
+          </picker>
+      </view>
+      <!--结束日期容器-->
+    </view>
+
+  </view>
+  <!--表格主体容器-->
+  <view class='bottom'>
+    <view class='table_left'>
+      <view class='title'>
+        <view class='name'>
+          名称
+        </view>
+        <view class='brand'>
+          规格型号
+        </view>
+      </view>
+      <view class='content'>
+
+        <scroll-view scroll-y bindscroll='onListScroll'>
+          <view class='scroll_item' bindtap='onMaterialItemTap'>
+            <view class='content_name'>
+              <text>复合肥</text>
+            </view>
+            <view class='content_brand'>
+              <text>marvel x01</text>
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+          <view class='scroll_item'>
+            <view class='content_name'>
+              
+            </view>
+            <view class='content_brand'>
+            
+            </view>
+          </view>
+        </scroll-view>
+
+      </view>
+    </view>
+    <view class='table_right'>
+      <scroll-view class='in_out' scroll-x>
+        <view class='scroll_item'>
+          <view class='title'>
+            <view class='title_top'>
+              <text>期初库存</text>
+            </view>
+            <view class='title_bottom'>
+              <view class='unit'>
+                单位
+              </view>
+              <view class='amount'>
+                数量
+              </view>
+              <view class='price'> 
+                单价(元)
+              </view>
+            </view>
+          </view>
+          <view class='content'>
+            <scroll-view scroll-y scroll-top='{{scrollTop}}'>
+              <view class='scroll_item'>
+                <view class='content_unit'>
+                  <text>袋</text>
+                </view>
+                <view class='content_amount'>
+                  <text>200</text>
+                </view>
+                <view class='content_price'>
+                  <text>1314.5678</text>
+                </view>
+              </view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+            </scroll-view>
+          </view>
+        </view>
+        <view class='scroll_item'>
+          <view class='title'>
+            <view class='title_top'>
+              <text>期末库存</text>
+            </view>
+            <view class='title_bottom'>
+              <view class='unit'>
+                单位
+              </view>
+              <view class='amount'>
+                数量
+              </view>
+              <view class='price'> 
+                单价
+              </view>
+            </view>
+          </view>
+          <view class='content'>
+            <scroll-view scroll-y scroll-top='{{scrollTop}}'>
+              <view class='scroll_item'>
+                <view class='content_unit'>
+                  <text>袋</text>
+                </view>
+                <view class='content_amount'>
+                  <text>200</text>
+                </view>
+                <view class='content_price'>
+                  <text>1314.5678</text>
+                </view>
+              </view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view>
+              <view class='scroll_item'></view> 
+            </scroll-view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class='bottom_total'>
+    <view class='bottom_total_left'>
+      
+    </view>
+    <view class='bottom_total_right'>
+      <view class='total_unit'><text>合计</text></view>
+      <view class='total_amount'><text>1111111111</text></view>
+      <view class='total_money'><text>1111111111</text></view>
+    </view>
+  </view>
+</view>

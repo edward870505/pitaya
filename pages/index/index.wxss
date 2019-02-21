@@ -1,0 +1,241 @@
+view.outter_container{
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+ }
+
+ view.weather_info_container{
+   flex-basis: 13%;
+   display: flex;
+ }
+
+ view.city_picker_container{
+   flex-basis: 35%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+view.weather_container{
+  flex-basis: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+view.weather_container_top{
+  flex-basis: 40%;
+  padding-top: 20rpx;
+}
+
+view.weather_container_bottom{
+  flex-basis: 60%;
+  display: flex;
+  align-items: center;
+}
+
+ view.user_login_outter_container{
+   flex-basis: 17%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0 20rpx 0 20rpx;
+ }
+
+ view.user_login_container{
+   height: 60%;
+   box-shadow: 2rpx 2rpx 5rpx #c4c4c4;
+   border: 1rpx solid #d9d9d9;
+   border-radius: 5px;
+   display: flex;
+   align-items: center;
+   flex-grow: 1;
+ }
+
+ view.fruit_intro_container{
+   flex-basis: 30%;
+   margin-top: 50rpx;
+   margin-left: 20rpx;
+   margin-right: 20rpx;
+   display: flex;
+   flex-direction: column;
+   padding-top: 30rpx;
+ }
+
+view.fruit_intro_swiper{
+   margin-top: 50rpx;
+ }
+
+ swiper-item{
+   display: flex;
+   flex-direction: column;
+   flex-basis: 80%;
+ }
+
+ swiper-item view.item_intro{
+   flex-basis: 80%;
+   box-shadow: 10rpx 10rpx 20rpx #f0efef;
+   border-radius: 15rpx;
+   display: flex;
+   align-items: center;
+   border:1px solid  #d8d7d7;
+ }
+
+ view.item_intro view.intro_left{
+   flex-basis: 35%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   color: rgb(122, 121, 121);
+   border-right: 1px solid;
+   height: 85%;
+
+ }
+
+ view.item_intro view.intro_right{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-indent: 50rpx;
+   flex-basis: 65%;
+   padding-left: 20rpx;
+ }
+
+ image.intro_fruit_hdimg{
+   width: 120rpx;
+   height: 120rpx;
+ }
+
+ text.intro_fruit_name{
+    font-weight: 600;
+ }
+
+
+  view.item_intro view.intro_right{
+    flex-basis: 60%;
+  }
+
+
+ view.fruit_intro_title_container{
+   display: flex;
+   align-items: center;
+ }
+
+
+
+ view.fruit_price_container{
+   flex-basis: 40%;
+   padding-top: 65rpx;
+   margin:65rpx 20rpx 0 20rpx;
+ }
+
+
+image.weather{
+  height: 40rpx;
+  width: 40rpx;
+  padding-right: 10rpx;
+}
+
+text.cities{
+  font-size: 55rpx;
+  font-weight: bold;
+}
+
+text.temp{
+  font-size: 40rpx;
+}
+
+view.user_login_container_hover{
+  background-color: #f7f5f5;
+}
+
+image.user_avatar{
+  height: 70rpx;
+  width: 70rpx;
+  border-radius:50rpx; 
+  margin-left: 15rpx;
+}
+
+text.user_name{
+  margin-left: 10rpx;
+}
+
+text.login_text{
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  padding-right: 15rpx;
+  color:rgba(68, 126, 233, 0.877);
+}
+
+text.fruit_intro_title{
+  font-weight: bold;
+  font-size: 55rpx;
+}
+
+image.fruit_intro_title_png{
+  width: 55rpx;
+  height: 55rpx;
+  padding-left: 15rpx;
+  padding-top: 0rpx; 
+}
+
+text.fruit_price_title{
+  font-size: 55rpx;
+  font-weight: bold; 
+}
+
+view.fruit_price_items{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 25rpx;
+}
+
+view.fruit_item{
+  width: 150rpx;
+  height: 150rpx;
+  border: 1px solid;
+  border-radius:10rpx; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  border: 1rpx solid #d9d9d9;
+  margin-right: 15rpx;
+}
+
+image.pitaya_item_png{
+  width: 70rpx;
+  height: 70rpx;
+}
+
+view.fruit_item_hover{
+  background-color: #f7f5f5;
+}
+
+image.fruit_price_png{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 15rpx;
+}
+
+view.fruit_price_png_container{
+  display: flex;
+  align-items: center;
+}
+
+ image.down-arrow{
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+
+text.user_role{
+  margin-left: 10rpx;
+  font-size: 25rpx;
+  color: rgb(139, 138, 138);
+}
+

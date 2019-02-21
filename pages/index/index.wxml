@@ -1,0 +1,116 @@
+<!--pages/index/index.wxml-->
+<view class='outter_container'>
+  <!--天气信息-->
+  <view class='weather_info_container'>
+    <view class='city_picker_container'>
+      <!--
+        城市Picker
+        #选择需要显示天气信息的城市#
+      -->
+      <picker range='{{weatherInfo.cities}}' bindchange='onWeatherSelectedCityChanged'>
+        <text class='cities'>{{weatherInfo.selectedCity}}</text>
+      </picker>
+       <!--城市Picker-->
+
+       <!--城市Picker 箭头-->
+      <image class='down-arrow' src='/images/down-arrow.png'></image>
+       <!--城市Picker 下箭头-->
+    </view>
+
+    <view class='weather_container'>
+       <!--天气信息
+        #显示日期#
+       -->
+      <view class='weather_container_top'>
+        <text class='date'>{{weatherInfo.date}} {{weatherInfo.day}}</text>
+      </view>
+       <!--城市Picker 下箭头-->
+      <view class='weather_container_bottom'>
+        <!--<image  class='weather' src='/images/sunny.png'></image>-->
+        <text class='temp'>{{weatherInfo.temp}}℃  {{weatherInfo.weather}}</text>
+      </view>
+    </view>
+  <!--天气信息-->
+  </view>
+
+  <!--用户登录框-->
+  <view class='user_login_outter_container'>
+    <view class='user_login_container'  hover-class='user_login_container_hover' bindtap='onUserLogInBtnTap'>
+      <image class='user_avatar' src='{{user.avatarUrl}}'></image>
+      <text class='user_name'>{{user.cnname}}</text>
+      <text class='user_role'>{{user.role}}</text>
+      <text class='login_text'>{{user.loginStatus}}</text>
+    </view>
+  </view>
+  <!--用户登录框-->
+
+  <!--品种介绍-->
+  <view class='fruit_intro_container'>
+    <view class='fruit_intro_title_container'>
+      <text class='fruit_intro_title'>火龙果品种</text>
+      <image class='fruit_intro_title_png' src='/images/index_pitaya.png' ></image>
+    </view>
+    <view class='fruit_intro_swiper'>
+      <swiper  indicator-dots>
+
+        <swiper-item>
+
+          <view class='red_pitaya_intro item_intro'>
+            <view class='intro_left'>
+              <image class='intro_fruit_hdimg' src='/images/red_pitaya.png'></image>
+              <text class='intro_fruit_name'>红皮红肉</text>
+            </view>
+            <view class='intro_right'>
+              果皮及果肉均为红色，我国广西、广东、台湾等地均有种植，目前主要产自越南
+            </view>
+          </view>
+        </swiper-item>
+
+        <swiper-item>
+          <view class='yellow_pitaya_intro item_intro'>
+            <view class='intro_left'>
+              <image class='intro_fruit_hdimg' src='/images/yellow_pitaya.png'></image>
+              <text class='intro_fruit_name'>黄皮白肉</text>
+            </view>
+            <view class='intro_right'>
+              果皮黄色，果肉白色，又称燕窝果，盛产于中美洲（哥伦比亚），火龙果中的“拉菲”
+            </view>
+          </view>
+        </swiper-item>
+
+        <swiper-item>
+          <view class='white_pitaya_intro item_intro'>
+             <view class='intro_left'>
+              <image class='intro_fruit_hdimg' src='/images/white_pitaya.png'></image>
+              <text class='intro_fruit_name'>红皮白肉</text>
+            </view>
+            <view class='intro_right'>
+              果皮红色，果肉白色，盛产于越南，火龙果中最耐存储的品种，甜度较低
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+
+  </view>
+  <!--品种介绍-->
+
+  <!--水果行情-->
+  <view wx:if='{{user.authorities.query.price}}' class='fruit_price_container'>
+    <view class='fruit_price_title_container'>
+      <view class='fruit_price_png_container'>
+        <text class='fruit_price_title'>火龙果行情</text>
+        <image class='fruit_price_png' src='/images/index_chart.png'></image>
+      </view>
+      <view class='fruit_price_items'>
+      <block wx:for="{{fruitItems}}" wx:for-item="fruit">
+          <view class='fruit_item' hover-class='fruit_item_hover' data-name='{{fruit.name}}' data-species='{{fruit.species}}' bindtap='onFruitItemTap'>
+            <image class='pitaya_item_png' src='{{fruit.imgSrc}}'></image>
+            <text>{{fruit.name}}</text>
+        </view>
+      </block>
+      </view>
+    </view>
+  </view>
+  <!--水果行情-->
+</view>

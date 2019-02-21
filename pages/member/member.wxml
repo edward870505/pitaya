@@ -1,0 +1,147 @@
+<view class='outter_container'>
+
+  <view class='top_container'>
+    <!--用户信息-->
+    <view class='top_left'>
+      <image src='{{user.avatarUrl}}' class='user_avatar'>
+      </image>
+      <text class='user_name'>{{user.cnname}}</text>
+      <text class='user_role'>{{user.role}}</text>
+    </view>
+    <!--用户信息-->
+    <view class='top_center'>
+    </view>
+    <!--事项审查按钮-->
+    <view class='top_right'>
+      <picker wx:if='{{user.authorities.query.audition}}' range='{{["事项审核"]}}' bindchange='onUserOpChange'>
+          <image bindtap='onUserOpImgTap' wx:if='{{user.isLogin}}' class='attention' src='/images/need_attention.png' ></image>
+      </picker>
+    </view>
+    <!--事项审查按钮-->
+  
+  </view>
+  <!--用户未登录前显示的信息-->
+  <block wx:if='{{!user.isLogin}}'>
+    <view class='center_container'>
+      <view class='loginTips'>
+        <image class='loginTipsImg' src='/images/user_login.png'></image>
+        <text class='tipsContent'>请先登录</text>
+        <text class='actionsContent'>登录后可进行行情查看，农场数据管理等操作</text>
+      </view>
+    </view>
+  </block>
+  <!--用户未登录前显示的信息-->
+
+  <!--用户未登录后显示的信息-->
+  <block wx:else>
+    <view class='center_container_login'>
+     <!--基础信息-->
+      <block wx:if='{{user.authorities.query.basicinfo}}'>
+        <view class='panel_title panel_basicinfo'>
+          <text>基础信息</text>
+          <image class='panel_title_img' src='/images/basicinfo.png'></image>
+        </view>
+        <scroll-view scroll-x='true'>
+        <navigator class='scroll_item'  url='../grade/grade_new'>
+            <image class='scroll_item_img'   src='/images/rank.png'></image>
+            <text class='scroll_item_title'>分级</text>
+        </navigator>
+
+        <navigator class='scroll_item' url='../field/field'>
+            <image class='scroll_item_img'  src='/images/field.png'></image>
+            <text class='scroll_item_title'>地块</text>
+          </navigator>
+
+        <navigator class='scroll_item' url='../producenode/producenode'>
+            <image class='scroll_item_img' src='/images/process.png'></image>
+            <text class='scroll_item_title'>生产流程</text>
+        </navigator>
+        <navigator class='scroll_item' url='../farming/farming'>
+            <image class='scroll_item_img' src='/images/fertilize.png'></image>
+            <text class='scroll_item_title'>农事活动</text>
+        </navigator>
+        <navigator class='scroll_item' url='../material/material'>
+            <image class='scroll_item_img' src='/images/material.png'></image>
+            <text class='scroll_item_title'>物资</text>
+        </navigator>
+        <navigator class='scroll_item' url='../exchangerate/exchangerate'>
+            <image class='scroll_item_img' src='/images/exchange.png'></image>
+            <text class='scroll_item_title'>汇率</text>
+        </navigator>
+        <navigator class='scroll_item' url='../unit/unit'>
+            <image class='scroll_item_img' src='/images/计量单位.png'></image>
+            <text class='scroll_item_title'>单位</text>
+        </navigator>
+        <navigator class='scroll_item' url='../species/species'>
+            <image class='scroll_item_img' src='/images/dragon_fruit.png'></image>
+            <text class='scroll_item_title'>品种</text>
+        </navigator>
+        <navigator class='scroll_item' url='../team/team'>
+            <image class='scroll_item_img' src='/images/form_label_imgs/小组.png'></image>
+            <text class='scroll_item_title'>小组</text>
+        </navigator>
+        <navigator class='scroll_item' url='../scheme/scheme'>
+            <image class='scroll_item_img' src='/images/scheme.png'></image>
+            <text class='scroll_item_title'>方案</text>
+        </navigator>
+        <navigator class='scroll_item' url='../transfer/transfer'>
+            <image class='scroll_item_img' src='/images/转换关系.png'></image>
+            <text class='scroll_item_title'>转换关系</text>
+        </navigator>
+        <navigator class='scroll_item' url='../farm/farm'>
+            <image class='scroll_item_img' src='/images/farm-2.png'></image>
+            <text class='scroll_item_title'>农场</text>
+        </navigator>
+        </scroll-view>
+      </block>
+      <!--基础信息-->
+
+      <!--计划编制-->
+      <block wx:if='{{user.authorities.query.plan}}'>
+        <view class='panel_title panel_plan'>
+          <text>计划编制</text>
+          <image class='panel_title_img' src='/images/plan.png'></image>
+        </view>
+        <scroll-view scroll-x='true'>
+          <navigator class='scroll_item' url='../produceplan/produceplan'>
+            <image class='scroll_item_img'   src='/images/produce.png'></image>
+            <text class='scroll_item_title'>生产计划</text>
+          </navigator>
+          <navigator class='scroll_item' url='../farmdiary/farmdiary'>
+            <image class='scroll_item_img'  src='/images/diary.png'></image>
+            <text class='scroll_item_title'>农事日志</text>
+          </navigator>
+        </scroll-view>
+      </block>
+      <!--计划编制-->
+
+      <!--仓库管理-->
+      <block wx:if='{{user.authorities.query.warehouse}}'>
+        <view class='panel_title panel_warehouse'>
+          <text>仓库管理</text>
+          <image class='panel_title_img' src='/images/warehouse.png'></image>
+        </view>
+        <scroll-view scroll-x='true'>
+          <navigator class='scroll_item' url='/pages/warehouse/warehouse'>
+            <image class='scroll_item_img'   src='/images/panel_warehouse.png'></image>
+            <text class='scroll_item_title'>仓库维护</text>
+          </navigator>
+          <!--<navigator class='scroll_item'>
+          <image class='scroll_item_img'  src='/images/panel_material.png'></image>
+            <text class='scroll_item_title'>物资管理</text>
+          </navigator>-->
+        </scroll-view>
+      </block>
+      <!--仓库管理-->
+    </view>
+  </block>
+  <!--用户未登录后显示的信息-->
+
+
+    
+  <view class='bottom_container'>
+  </view>
+
+
+</view>
+

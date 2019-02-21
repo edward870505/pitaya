@@ -1,0 +1,15 @@
+/* pages/text/text.wxss */
+view.scroll_item{
+  height: 100rpx;
+  width: 200rpx;
+  border: 1px solid;
+  display: inline-block;
+}
+
+scroll-view{
+  width: 100%;
+  height: 300rpx;
+  background-color: wheat;
+  white-space: nowrap;
+  
+}

@@ -1,0 +1,90 @@
+<!--pages/farmdiary/farmdiary.wxml-->
+<import src='../../templates/operation_page/top_container_scroll_view/top_container_scroll_view.wxml'/>
+<view class='outter_container'>
+  <view class='top_container'>
+    <scroll-view scroll-x>
+      <template is='operations_bar' wx:for='{{operations}}' data='{{imgSrc:item.imgSrc,text:item.text,action:item.action}}'></template>
+    </scroll-view>
+  </view>
+
+  <view class='border'></view>
+  
+  <view class='diary_container'>
+      <view class='top'>
+        <view class='top_container'>
+          <view class='label'>农场</view>
+          <view class='content left'>
+            <picker data-name='farm' range='{{pickerRange.farms}}' bindchange='onDiaryTablePickerValueChanged'><text>{{diary.farm}}</text></picker>
+          </view>
+          <view class='label'>日期</view>
+          <view class='content right' id='date'>
+            <picker data-name='dateBegin' mode='date' class='begin' bindchange='onDiaryTablePickerValueChanged'><text>{{diary.dateBegin}}</text></picker>
+            <picker data-name='dateEnd' mode='date' class='end' bindchange='onDiaryTablePickerValueChanged'><text>{{diary.dateEnd}}</text></picker>
+          </view>  
+        </view>
+        <view class='bottom_container'>
+          <view class='label'>地块</view>
+          <view class='content left' id='field'>
+            <picker data-name='field' range='{{pickerRange.fields}}' bindchange='onDiaryTablePickerValueChanged'><text>{{diary.field}}</text></picker>
+          </view>
+        </view>
+        <view class='head_title'>
+          农事记录
+        </view>
+        <view class='farming_table_title' class='{{dataset.length>0?"farming_table_title":"farming_table_title no-records"}}'>
+          <view class='title-beginDate'>计划日期</view>
+          <view class='title-period'>物候期</view>
+          <view class='title-farming'>农事活动</view>
+          <view class='title-teams'>小组</view>
+          <view class='title-finishedDate'>完成日期</view>
+        </view>
+      </view>
+      <view class='center'>
+
+          <scroll-view scroll-y>
+            <block wx:for='{{dataset}}'>
+              <picker data-index='{{index}}' style='display:{{item.show?"block":"none"}};' range='{{dairyOperations}}' bindchange='onFarmingPickerValueChanged' data-index='{{index}}'>
+                <view class='{{item.finished?"dairy_section finished":"dairy_section"}}'>
+                  <view class='item-beginDate'><text>{{item.planDate}}</text></view>
+                  <view class='item-period'><text>{{item.period}}</text></view>
+                  <view class='item-farming'><text>{{item.farming}}</text></view>
+                  <view class='item-teams'>
+                    <block wx:for='{{item.team}}' wx:for-index='idx' wx:for-item='team'>
+                      <view class='team_record' wx:if='{{idx<=1}}'><text>{{team}}</text></view>
+                    </block>
+
+                    <view class='team_record' wx:if='{{item.team.length>2}}'><text>...</text></view>
+                    
+                  </view>
+                  <view class='item-finishedDate'>
+                    <block wx:if='{{item.finishedDate==""}}'>
+                       <text>未完成</text>
+                    </block>
+                    <block wx:else>
+                       <text>{{item.finishedDate}}</text>
+                    </block>
+                  </view>
+                </view>
+              </picker>
+            </block> 
+
+          </scroll-view>
+        </view>
+      <view class='bottom'>
+      </view>
+
+  </view>
+ 
+</view>
+
+<view class='container'>
+  <dialog
+    id='dialog' 
+    title='{{popupDialog.title}}'
+    cancelText='{{popupDialog.cancelText}}'
+    confirmText='{{popupDialog.confirmText}}'
+    bind:cancelEvent = '_cancelEvent'
+    bind:confirmEvent = '_confirmEvent'
+  >
+  </dialog>
+</view>

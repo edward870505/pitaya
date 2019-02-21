@@ -1,0 +1,38 @@
+<!--pages/scheme/add/add.wxml-->
+<import src='../../../templates/add_item_page/center_container_form/center_container_form.wxml'/>
+<view class='outter_container'>
+  <!--<view class='top_container'>
+    <text class='page_title'>新增地块</text>
+  </view>-->
+  <view class='center_container'>
+    <scroll-view scroll-y>
+      <form bindsubmit='onAddItemFormSubmit'>
+        <template is='form_section'  wx:for='{{formSections}}' data='{{index:index,name:item.name,value:item.value,imgSrc:item.imgSrc,text:item.text,placeholder:item.inputPlaceHolder,initPickerText:item.initPickerText,inputType:item.inputType,unitInput:item.unitInput,unitInputType:item.unitInputType,farmingRange:pickerRange.farmings}}'></template>
+        <view class='scheme_container'>
+           <view wx:for='{{otherFormSections}}' class='scheme_container_top'>
+              <view class='scheme_container_top_left'>
+                <image class='scheme_img' src='{{customedFormSectionItem.imgSrc}}'></image>
+              </view>
+              <view class='scheme_container_top_center'>
+                <text class='scheme_text'>{{customedFormSectionItem.text}}</text>
+              </view>
+              <view class='scheme_container_top_right'>
+               <picker bindchange='onPickerValueChanged' range='{{pickerRange.materials}}' data-index='{{index}}' data-key='material' data-name='material'><text>{{item.material}}</text><image src='/images/down.png'></image></picker>
+                <input type='digit' bindblur='onInputBlur' value='{{item.totalAmount}}' data-index='{{index}}' data-key='totalAmount' data-name='totalAmount' placeholder='请输入数量' placeholder-class='placeholder'></input>
+                <picker bindchange='onPickerValueChanged' range='{{pickerRange.units}}' data-index='{{index}}' data-key='amountUnit' data-name='amountUnit'><text>{{item.amountUnit}}</text><image src='/images/down.png'></image></picker>
+              </view>
+           </view>
+           <view class='scheme_container_bottom' hover-class='scheme_container_bottom_hover' bindtap='onAddCustomedFormSectionBtnTap'>
+              <text class='add_scheme_text'>添加物资</text>
+           </view>
+        </view>
+        <view class='btnGroup'>
+          <button form-type='submit' plain>提交</button>
+        </view>
+      </form>
+    </scroll-view>
+  </view>
+  <view class='bottom_container'>
+    
+  </view>
+</view>

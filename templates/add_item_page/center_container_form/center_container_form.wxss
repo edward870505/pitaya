@@ -1,0 +1,74 @@
+/* templates/add_item_page/center_container_form/center_container_form.wxss */
+view.center_container scroll-view form view.section{
+  min-height: 200rpx;
+  max-height: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+  border: 1px solid #8f8f8f;
+  padding-bottom: 15rpx;
+  padding-top: 15rpx;
+}
+
+view.section_left{
+  flex-basis: 5%;
+  margin-left:10rpx;
+  display: flex;
+  align-items: center;
+}
+
+view.section_center{
+  flex-basis: 28%;
+  margin-left: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+view.section_right{
+  flex-basis: 55%;
+  max-width: 55%;
+}
+
+
+view.section image.section_img{
+  height: 50rpx;
+  width: 50rpx;
+
+}
+
+view.section text.section_text{
+  color: #aaaaaa;
+}
+
+view.section view.section_input{
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+view.section view.section_input .checkbox_item{
+  border-bottom: 1px solid;
+  margin-bottom: 10rpx;
+}
+
+.placeholder{
+    color: black;
+}
+
+view.section_input_bottom picker{
+  border-bottom: 1px solid;
+  margin-top: 30rpx;
+}
+
+view.section_species{
+  border: 1px solid;
+}
+
+view.section_input_bottom{
+  
+}
+
+text.exchangerate{
+  font-size: 30rpx;
+}
+

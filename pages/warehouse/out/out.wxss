@@ -1,0 +1,13 @@
+/* pages/warehouse/out/out.wxss */
+
+@import '/templates/add_item_page/common.wxss';
+@import '/templates/add_item_page/center_container_form/center_container_form.wxss';
+
+.exchangeinput{
+  margin-top: 30rpx;
+  color: rgb(122, 121, 121);
+}
+
+.totalinput{
+  color: rgb(122, 121, 121);
+}

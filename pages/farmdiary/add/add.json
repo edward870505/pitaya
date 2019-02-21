@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "新增农事记录",
+  "usingComponents":{
+    "dialog":"../../../components/popup/popup"
+  }
+}

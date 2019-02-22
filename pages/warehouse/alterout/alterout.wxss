@@ -66,7 +66,7 @@ view.outter .center .table_head{
 }
 
 view.outter .center .table_head view{
-  font-size: 25rpx;
+  font-size: 22rpx;
   border-right:1px dashed; 
   display: flex;
   justify-content: center;
@@ -79,15 +79,19 @@ view.outter .center .table_head view:last-child{
 }
 
 view.outter .center .table_head .date{
-  flex-basis: 22%;
+  flex-basis: 15%;
 }
 
 view.outter .center .table_head .in_out{
-  flex-basis: 22%;
+  flex-basis: 15%;
 }
 
 view.outter .center .table_head .amount{
-  flex-basis: 24%;
+  flex-basis: 18%;
+}
+
+view.outter .center .table_head .material{
+  flex-basis: 18%;
 }
 
 view.outter .center .table_head .unit{
@@ -144,20 +148,28 @@ view.outter .center .table_body .records scroll-view .scroll_item view{
   align-items: center;
 }
 
+view.outter .center .table_body .records scroll-view .scroll_item view.date{
+  font-size: 18rpx;
+}
+
 view.outter .center .table_body .records scroll-view .scroll_item view:last-child{
   border-right: none;
 }
 
 view.outter .center .table_body .records scroll-view .scroll_item .date{
-  flex-basis: 22%;
+  flex-basis: 15%;
 }
 
 view.outter .center .table_body .records scroll-view .scroll_item .in_out{
-  flex-basis: 22%;
+  flex-basis: 15%;
 }
 
 view.outter .center .table_body .records scroll-view .scroll_item .amount{
-  flex-basis: 24%;
+  flex-basis: 18%;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item .material{
+  flex-basis: 18%;
 }
 
 view.outter .center .table_body .records scroll-view .scroll_item .unit{
@@ -172,7 +184,20 @@ view.outter .center .table_body .records scroll-view .scroll_item .price{
   align-items: center;
 }
 
+view.outter .center .table_body .records scroll-view .scroll_item .material{
+  flex-basis: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 view.outter .center .table_body .records scroll-view .scroll_item .price text{
+  font-size: 17rpx;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item .material text{
   font-size: 17rpx;
 }
 
@@ -222,4 +247,6 @@ view.outter .center .table_body .records{
   flex-basis: 90%;
 }
 
-                        
+
+
+

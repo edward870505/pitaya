@@ -79,7 +79,7 @@ view.outter .center .table_head view:last-child{
 }
 
 view.outter .center .table_head .date{
-  flex-basis: 15%;
+  flex-basis: 16%;
 }
 
 view.outter .center .table_head .in_out{
@@ -157,7 +157,7 @@ view.outter .center .table_body .records scroll-view .scroll_item view:last-chil
 }
 
 view.outter .center .table_body .records scroll-view .scroll_item .date{
-  flex-basis: 15%;
+  flex-basis: 16%;
 }
 
 view.outter .center .table_body .records scroll-view .scroll_item .in_out{
@@ -195,6 +195,10 @@ view.outter .center .table_body .records scroll-view .scroll_item .material{
 
 view.outter .center .table_body .records scroll-view .scroll_item .price text{
   font-size: 17rpx;
+}
+
+view.outter .center .table_body .records scroll-view .scroll_item .date text{
+  font-size: 15rpx;
 }
 
 view.outter .center .table_body .records scroll-view .scroll_item .material text{

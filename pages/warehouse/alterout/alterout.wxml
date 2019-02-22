@@ -2,12 +2,13 @@
 <!--pages/warehouse/alterout/alterout.wxml-->
 <view class='outter'>
   <view class='top'>
-    <text class='title'>{{warehouse.parent.name}} {{warehouse.name}} 出仓单</text>
+    <text class='title'>{{warehouse.parent.name}} {{warehouse.name}} 进仓单</text>
   </view>
   <view class='center'>
     <view class='table_head'>
       <view class='date'>日期</view>
       <view class='in_out'>出库方式</view>
+      <view class='material'>物资</view>
       <view class='amount'>数量</view>
       <view class='unit'>单位</view>
       <view class='price'>
@@ -30,6 +31,10 @@
               </view>
               <view class='in_out'>
                 <text>{{item.wayin}}</text>
+              </view>
+              <view class='material'>
+                <text class='name'>{{item.sub_material.name}}</text>
+                <text class='brand'>{{item.sub_material.specification}}</text>
               </view>
               <view class='amount'>
                 <text>{{item.mainAmount}}</text>

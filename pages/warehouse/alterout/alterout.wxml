@@ -1,7 +1,8 @@
 <!--pages/warehouse/alterout/alterout.wxml-->
+<!--pages/warehouse/alterout/alterout.wxml-->
 <view class='outter'>
   <view class='top'>
-    <text class='title'>胡志明 1号场仓 出仓单</text>
+    <text class='title'>{{warehouse.parent.name}} {{warehouse.name}} 出仓单</text>
   </view>
   <view class='center'>
     <view class='table_head'>
@@ -13,58 +14,39 @@
         <view>单价(元)</view>
         <view>单价(VND)</view>
       </view>
+      <view class='price'>
+        <view>总价(元)</view>
+        <view>总价(VND)</view>
+      </view>
+     
     </view>
     <view class='table_body'>
-            <view class='records'>
+      <view class='records'>
         <scroll-view scroll-y>
-          <view class='scroll_item in'>
-            <view class='date'>
-              <text>2018/12/22</text>
+          <block wx:for='{{warehouse.inANDoutRecords}}'>
+            <view class='scroll_item out' wx:if='{{item.type=="out"}}'>
+              <view class='date'>
+                <text>{{item.time}}</text>
+              </view>
+              <view class='in_out'>
+                <text>{{item.wayin}}</text>
+              </view>
+              <view class='amount'>
+                <text>{{item.mainAmount}}</text>
+              </view>
+              <view class='unit'>
+                <text>{{item.mainUnit}}</text>
+              </view>
+              <view class='price'>
+                <text class='RMB'>{{item.priceRMB}}</text>
+                <text class='VND'>{{item.priceVND}}</text>
+              </view>
+              <view class='price'>
+                <text class='RMB'>{{item.totalRMB}}</text>
+                <text class='VND'>{{item.totalVND}}</text>
+              </view>
             </view>
-            <view class='in_out'>
-              <text>采购进仓</text>
-            </view>
-            <view class='amount'>
-              <text>100</text>
-            </view>
-            <view class='unit'>
-              <text>袋</text>
-            </view>
-            <view class='price'>
-              <text>120.3</text>
-            </view>
-          </view>
-          <view class='scroll_item out'>
-            <view class='date'>
-              <text>2018/12/22</text>
-            </view>
-            <view class='in_out'>
-              <text>采购进仓</text>
-            </view>
-            <view class='amount'>
-              <text>-100</text>
-            </view>
-            <view class='unit'>
-              <text>袋</text>
-            </view>
-            <view class='price'>
-              <text>120.3</text>
-              <text>10120120120.3</text>
-            </view>
-          </view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
-          <view class='scroll_item'></view>
+          </block>
         </scroll-view>
       </view>
       <view class='ending'>
@@ -85,3 +67,4 @@
     </view>
   </view>
 </view>
+

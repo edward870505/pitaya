@@ -143,7 +143,7 @@
             <!--金额 input-->
 
             <!--普通picker-->
-            <picker wx:if='{{inputType === "warehousepicker"}}' bindchange='onPickerValueChanged' data-key='{{name}}' data-name='{{name}}' value='{{value}}' data-index='{{index}}' range='{{pickerRange[rangeKey]}}' range-key='{{range_key}}'><text>{{placeholder}}</text><image src='/images/down.png'></image></picker>
+            <input wx:if='{{unitInputType === "warehousepicker"}}' value='{{rootWarehouse.name}}' disabled></input>
            <!--普通picker-->
           </view>
       </view>

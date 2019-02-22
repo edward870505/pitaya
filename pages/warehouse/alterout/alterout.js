@@ -12,7 +12,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var warehouseId, page, warehouse;
 
+    page = this;
+    warehouseId = options.data;
+
+    wx.cloud.callFunction({
+      name: 'query',
+      data: {
+        collectionName: 'warehouses',
+        keys: {
+          _id: warehouseId
+        }
+      },
+      success(res) {
+        console.log(res)
+        warehouse = res.result.data[0];
+        page.setData({
+          warehouse: warehouse
+        });
+      }
+    });
   },
 
   /**
@@ -67,8 +87,9 @@ Page({
    * 
    * **/
   onAddBtnTap:function(e){
-    var url;
-    url = '/pages/warehouse/out/out';
+    var url, data;
+    data = this.data.warehouse._id;
+    url = '/pages/warehouse/out/out?data=' + data;
     wx.navigateTo({
       url: url,
     })

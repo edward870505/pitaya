@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    warehouse: null,
-    rootWarehouse:null,
+    warehouse: {},
+    rootWarehouse:{},
     action: 'materialIn',
     formSections: [
       {
@@ -101,7 +101,11 @@ Page({
       priceVND:'',
       priceRMB:'',
       totalRMB:'',
-      totalVND:''
+      totalVND:'',
+      amount:'',
+      subUnit:'',
+      mainUnit:'',
+      transferAmount:''
     }
   },
 
@@ -110,24 +114,38 @@ Page({
    */
   onLoad: function (options) {
 
-    var warehouse;
+    var warehouseId,page,warehouse;
 
-    warehouse = JSON.parse(options.data);
+    warehouseId = options.data;
 
-    this.setData({
-      warehouse:warehouse
+    page = this;
+
+    wx.cloud.callFunction({
+      name:'query',
+      data:{
+        collectionName:'warehouses',
+        keys:{
+          _id:warehouseId
+        }
+      },
+      success(res){
+        warehouse = res.result.data[0];
+        page.setData({
+          warehouse: warehouse
+        });
+        page.initPickerRange(
+          [
+            'waysin',
+            'sub_materials',
+            'units',
+            'exchangerates'
+          ]
+        );
+      }
     });
 
     console.log(warehouse);
 
-    this.initPickerRange(
-      [
-        'waysin',
-        'sub_materials',
-        'units',
-        'exchangerates'
-      ]
-    );
 
   },
 
@@ -302,14 +320,33 @@ Page({
        case 'waysin':
         value = this.data.pickerRange[key][e.detail.value];
 
+         if (value == '调拨进仓' && this.data.warehouse.type == '一级仓') {
+           wx.showToast({
+             title: '一级仓无法调拨进仓',
+             icon:'none'
+           });
+           return;
+         }
+
         formSectionIndex = 'formSections[' + index + '].inputPlaceHolder';
          this.setData({
            [formSectionIndex]: value,
            ['dataset.wayin']:value
         });
 
+ 
         if(value == '调拨进仓'){
-          console.log(this.data.formSections[1].unitInput);
+          keyIndex = 'formSections['+index+'].unitInput';
+          this.setData({
+            [keyIndex]:true
+          });
+          console.log(this.data.formSections);
+        }else{
+          keyIndex = 'formSections[' + index + '].unitInput';
+          this.setData({
+            [keyIndex]: false
+          });
+          console.log(this.data.formSections);
         }
         
        break;
@@ -384,7 +421,7 @@ Page({
    * **/
     onInputBlur:function(e){
 
-      var name, key, index, value, formSectionIndex, datasetIndex,transfer,sub_material,subAmount,mainAmount,priceVND,priceRMB,totalRMB,totalVND;
+      var name, key, index, value, formSectionIndex, datasetIndex,transfer,sub_material,subAmount,mainAmount,priceVND,priceRMB,totalRMB,totalVND,transferAmount;
       name = e.currentTarget.dataset.name;
       key = e.currentTarget.dataset.key;
       index = e.currentTarget.dataset.index;
@@ -449,8 +486,131 @@ Page({
     * 
     **/
     onAddItemFormSubmit:function(e){
-      var inRecord;
+      var warehouse,
+          rootWarehouse,
+          inRecord,
+          inANDoutRecords,
+          stock,
+          dataset,
+          time,
+          wayin,
+          mainUnit,
+          subUnit,
+          priceRMB,
+          priceVND,
+          totalRMB,
+          totalVND,
+          amount,
+          sub_material,
+          transfer,
+          exchangerate,
+          transferAmount,
+          mainAmount,
+          subAmount;
+      inRecord = {};
+      warehouse = this.data.warehouse;
+      rootWarehouse = this.data.rootWarehouse;
+      
+      time = this.data.dataset.time;
+      wayin = this.data.dataset.wayin;
+      sub_material = this.data.dataset.sub_material;
+      transfer = this.data.dataset.transfer;
+      exchangerate = this.data.dataset.exchangerate;
+      mainUnit = this.data.dataset.mainUnit;
+      subUnit = this.data.dataset.subUnit;
+      priceRMB = this.data.dataset.priceRMB;
+      priceVND = this.data.dataset.priceVND;
+      totalRMB = this.data.dataset.totalRMB;
+      totalVND = this.data.dataset.totalVND;
+      transferAmount = this.data.dataset.transferAmount;
+      mainAmount = this.data.dataset.mainAmount;
+      subAmount = this.data.dataset.subAmount;
+
+      if(!(time&&wayin&&sub_material&&transfer&&exchangerate&&mainUnit&&subUnit&&priceRMB&&priceVND&&totalRMB&&totalVND&&transferAmount)){
+        wx.showToast({
+          title: '带*号为必填项',
+          icon:'none'
+        });
+        return;
+      }
+
+      inRecord.time = time;
+      inRecord.wayin = wayin;
+      inRecord.sub_material = sub_material;
+      inRecord.transfer = transfer;
+      inRecord.exchangerate = exchangerate;
+      inRecord.mainUnit = mainUnit;
+      inRecord.subUnit = subUnit;
+      inRecord.priceRMB = priceRMB;
+      inRecord.priceVND = priceVND;
+      inRecord.totalRMB = totalRMB;
+      inRecord.totalVND = totalVND;
+      inRecord.mainAmount = mainAmount;
+      inRecord.subAmount = subAmount;
+      inRecord.transferAmount = transferAmount;
+      inRecord.type = 'in';
+      if(wayin == '调拨进仓'){
+        if(warehouse.type != '一级仓'){
+          console.log(rootWarehouse);
+        }
+      }else{
+        if(wayin == '盘盈进仓'){
+          inRecord.priceRMB = 0;
+          inRecord.priceVND = 0;
+          inRecord.totalRMB = 0;
+          inRecord.totalVND = 0;
+        } 
+        wx.cloud.callFunction({
+          name:'query',
+          data:{
+            collectionName:'warehouses',
+            keys:{
+              _id:warehouse._id
+            }
+          },
+          success(res){
+            stock = res.result.data[0].stock;
+            inANDoutRecords = res.result.data[0].inANDoutRecords;
+            console.log(stock);
+            if(stock.hasOwnProperty(warehouse._id)){
+              console.log('已存在,相同物资');
+              inANDoutRecords.push(inRecord);
+              stock[warehouse._id].left = Number(stock[warehouse._id].left)+Number(inRecord.mainAmount);
+            }else{
+              console.log('新物资');
+              inANDoutRecords.push(inRecord);
+              stock[warehouse._id] = {};
+              stock[warehouse._id].left = inRecord.mainAmount;
+            }
+            console.log(stock, inANDoutRecords);
+            wx.cloud.callFunction({
+              name:'update',
+              data:{
+                collectionName:'warehouses',
+                docid:warehouse._id,
+                data:{
+                  inANDoutRecords:inANDoutRecords,
+                  stock:stock
+                },
+                success(res){
+                  console.log(res);
+                  wx.navigateBack({
+                    
+                  })
+                }
+              }
+            });
+
+
+          }
+        });
+      }
+
+
+
+
       console.log(this.data.dataset);
+      
     }
    
 })

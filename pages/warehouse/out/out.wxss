@@ -1,5 +1,4 @@
-/* pages/warehouse/out/out.wxss */
-
+/* pages/warehouse/in/in.wxss */
 @import '/templates/add_item_page/common.wxss';
 @import '/templates/add_item_page/center_container_form/center_container_form.wxss';
 

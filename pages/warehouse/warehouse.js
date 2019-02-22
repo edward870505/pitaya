@@ -186,11 +186,12 @@ Page({
    * 
    * **/
   onRootWarehousePickerValueChanged:function(e){
-    var warehouseIdx,warehouse,operationId,data,url;
+    var warehouseIdx,warehouse,operationId,data,url,warehouseId;
     operationId = e.detail.value;
     warehouseIdx = e.currentTarget.dataset.index;
     warehouse = this.data.dataset[warehouseIdx];
-    data = JSON.stringify(warehouse);
+    warehouseId = warehouse._id;
+    data = warehouseId;
     switch(operationId){
 
       case '0':
@@ -200,9 +201,10 @@ Page({
       case '1':
         url = '/pages/warehouse/alterin/alterin?data=' + data;
       break;
+     
 
       case '2':
-
+        url = '/pages/warehouse/alterout/alterout?data=' + data;
       break;
     }
     wx.navigateTo({

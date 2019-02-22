@@ -7,7 +7,7 @@
   <view class='center_container'>
     <scroll-view scroll-y>
       <form bindsubmit='onAddItemFormSubmit'>
-        <template is='form_section'  wx:for='{{formSections}}' data='{{dataset:dataset,action:action,index:index,imgSrc:item.imgSrc,text:item.text,name:item.name,placeholder:item.inputPlaceHolder,inputType:item.inputType,unitInput:item.unitInput,unitInputType:item.unitInputType,initPickerText:item.initPickerText,rangeKey:item.rangeKey,range_key:item.range_key,pickerRange:pickerRange,initPickerText:item.initPickerText}}'></template>
+        <template is='form_section'  wx:for='{{formSections}}' data='{{dataset:dataset,action:action,index:index,imgSrc:item.imgSrc,text:item.text,name:item.name,placeholder:item.inputPlaceHolder,inputType:item.inputType,unitInput:item.unitInput,unitInputType:item.unitInputType,initPickerText:item.initPickerText,rangeKey:item.rangeKey,range_key:item.range_key,pickerRange:pickerRange,initPickerText:item.initPickerText,rootWarehouse:rootWarehouse}}'></template>
       <view class='btnGroup'>
           <button form-type='submit' bindtap='onSubmitBtnTap' plain>提交</button>
         </view>

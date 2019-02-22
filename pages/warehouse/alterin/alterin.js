@@ -12,11 +12,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var warehouse;
-    warehouse = JSON.parse(options.data);
-    this.setData({
-      warehouse:warehouse
+    var warehouseId,page,warehouse;
+    
+    page = this;
+    warehouseId = options.data;
+
+    wx.cloud.callFunction({
+      name: 'query',
+      data: {
+        collectionName: 'warehouses',
+        keys: {
+          _id: warehouseId
+        }
+      },
+      success(res) {
+        console.log(res)
+        warehouse = res.result.data[0];
+        page.setData({
+          warehouse: warehouse
+        });
+      }
     });
+
+
+
+
     console.log(warehouse);
 
   },
@@ -74,7 +94,7 @@ Page({
    * **/
   onAddBtnTap: function (e) {
     var url,data;
-    data = JSON.stringify(this.data.warehouse);
+    data = this.data.warehouse._id;
     url = '/pages/warehouse/in/in?data='+data;
     wx.navigateTo({
       url: url,

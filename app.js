@@ -207,6 +207,7 @@ App({
               'schemes',
               'species',
               'sub_materials',
+              'parent_materials',
               'team_members',
               'teams',
               'units',

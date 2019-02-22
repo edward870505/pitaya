@@ -8,33 +8,47 @@
     <view class='table_head'>
       <view class='date'>日期</view>
       <view class='in_out'>出库方式</view>
+      <view class='material'>物资</view>
       <view class='amount'>数量</view>
       <view class='unit'>单位</view>
       <view class='price'>
         <view>单价(元)</view>
         <view>单价(VND)</view>
       </view>
+      <view class='price'>
+        <view>总价(元)</view>
+        <view>总价(VND)</view>
+      </view>
+     
     </view>
     <view class='table_body'>
       <view class='records'>
         <scroll-view scroll-y>
           <block wx:for='{{warehouse.inANDoutRecords}}'>
-            <view class='scroll_item out'>
+            <view class='scroll_item out' wx:if='{{item.type=="in"}}'>
               <view class='date'>
-                <text></text>
+                <text>{{item.time}}</text>
               </view>
               <view class='in_out'>
-                <text></text>
+                <text>{{item.wayin}}</text>
+              </view>
+              <view class='material'>
+                <text class='name'>{{item.name}}</text>
+                <text class='brand'>{{item.specification}}</text>
               </view>
               <view class='amount'>
-                <text></text>
+                <text>{{item.mainAmount}}</text>
               </view>
               <view class='unit'>
-                <text></text>
+                <text>{{item.mainUnit}}</text>
               </view>
               <view class='price'>
-                <text class='RMB'></text>
-                <text class='VND'></text>
+                <text class='RMB'>{{item.priceRMB}}</text>
+                <text class='VND'>{{item.priceVND}}</text>
+              </view>
+              <view class='price'>
+                <text class='RMB'>{{item.totalRMB}}</text>
+                <text class='VND'>{{item.totalVND}}</text>
               </view>
             </view>
           </block>

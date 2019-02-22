@@ -506,11 +506,12 @@ Page({
           exchangerate,
           transferAmount,
           mainAmount,
-          subAmount;
+          subAmount,
+          page;
       inRecord = {};
       warehouse = this.data.warehouse;
       rootWarehouse = this.data.rootWarehouse;
-      
+      page = this;
       time = this.data.dataset.time;
       wayin = this.data.dataset.wayin;
       sub_material = this.data.dataset.sub_material;
@@ -591,13 +592,11 @@ Page({
                 data:{
                   inANDoutRecords:inANDoutRecords,
                   stock:stock
-                },
-                success(res){
-                  console.log(res);
-                  wx.navigateBack({
-                    
-                  })
                 }
+              },
+              success(res) {
+                console.log(res);
+                page.navigateBack();
               }
             });
 
@@ -611,6 +610,18 @@ Page({
 
       console.log(this.data.dataset);
       
+    },
+    navigateBack:function(){
+      console.log('hi');
+      wx.navigateBack({
+        delta:1,
+        success(res) {
+          wx.showToast({
+            title: '进仓成功',
+            icon:'none'
+          });
+        }
+      })
     }
    
 })

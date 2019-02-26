@@ -144,9 +144,6 @@ Page({
       }
     });
 
-    console.log(warehouse);
-
-
   },
 
   /**
@@ -238,10 +235,13 @@ Page({
                 page.data.pickerRange[key].push(item);
               }
             });
+
+            page.setData({
+              [keyIndex]: page.data.pickerRange[key]
+            });
   
           }else{
             console.log('非一级仓');
-
             wx.cloud.callFunction({
               name:'query',
               data:{
@@ -250,7 +250,7 @@ Page({
                   _id: page.data.warehouse.parent._id
                 }
               },
-              success(res){
+              success(res){ 
                 var stock;
                 page.setData({
                   rootWarehouse:res.result.data[0]
@@ -259,10 +259,13 @@ Page({
                 appInstance.dbData[key].forEach(function(item,index){
                   if(stock.hasOwnProperty(item._id)){
                     if(stock[item._id].left>0){
-                      item.pickername = item.name + ' / ' + item.specification
+                      item.pickername = item.name + ' / ' + item.specification + '(余' + stock[item._id].left+item.mainUnit+')';
                       page.data.pickerRange[key].push(item);
                     }
                   }
+                });
+                page.setData({
+                  [keyIndex]: page.data.pickerRange[key]
                 });
 
               }
@@ -275,6 +278,9 @@ Page({
               page.data.pickerRange[key].push(item);
             }
           });
+          page.setData({
+            [keyIndex]: page.data.pickerRange[key]
+          });
         break;
         case 'transfers':
           appInstance.dbData[key].forEach(function (item, index) {
@@ -286,6 +292,9 @@ Page({
               }
             }
           });
+          page.setData({
+            [keyIndex]: page.data.pickerRange[key]
+          });
         break;
         case 'exchangerates':
           appInstance.dbData[key].forEach(function(item,index){
@@ -294,11 +303,12 @@ Page({
               page.data.pickerRange[key].push(item);
             }
           });
+          page.setData({
+            [keyIndex]: page.data.pickerRange[key]
+          });
         break;
       }
-      page.setData({
-        [keyIndex]: page.data.pickerRange[key]
-      });
+
     },
   /**
    * 
@@ -324,6 +334,13 @@ Page({
            wx.showToast({
              title: '一级仓无法调拨进仓',
              icon:'none'
+           });
+           return;
+         }
+         if(value=='采购进仓' && (this.data.warehouse.type=='二级仓' || this.data.warehouse.type =='三级仓')){
+           wx.showToast({
+             title: '非一级仓无法采购进仓',
+             icon: 'none'
            });
            return;
          }
@@ -491,6 +508,7 @@ Page({
           inRecord,
           inANDoutRecords,
           stock,
+          childStock,
           dataset,
           time,
           wayin,
@@ -552,7 +570,80 @@ Page({
       inRecord.type = 'in';
       if(wayin == '调拨进仓'){
         if(warehouse.type != '一级仓'){
-          console.log(rootWarehouse);
+          wx.cloud.callFunction({
+            name:'query',
+            data:{
+              collectionName:'warehouses',
+              keys:{
+                _id:rootWarehouse._id
+              }
+            },
+            success(res){
+              stock = res.result.data[0].stock;
+              console.log(res);
+              if(Number(stock[sub_material._id].left)>0){
+                if((stock[sub_material._id].left - mainAmount)<0){
+                  wx.showToast({
+                    title: '库存不足',
+                    icon:'none'
+                  });
+                  return;
+                }else{
+                  wx.cloud.callFunction({
+                    name:'query',
+                    data:{
+                      collectionName:'warehouses',
+                      keys:{
+                        _id:warehouse._id
+                      }
+                    },
+                    success(res){
+                      inANDoutRecords = res.result.data[0].inANDoutRecords;
+                      childStock = res.result.data[0].stock;
+                      console.log(childStock);
+                      if(!childStock.hasOwnProperty(sub_material._id)){
+                        childStock[sub_material._id] = {
+                          left:mainAmount
+                        }
+                      }else{
+                        childStock[sub_material._id].left = childStock[sub_material._id].left + mainAmount
+                      }
+                      inANDoutRecords.push(inRecord);
+                      wx.cloud.callFunction({
+                        name:'update',
+                        data:{
+                          collectionName:'warehouses',
+                          docid:warehouse._id,
+                          data:{
+                            inANDoutRecords:inANDoutRecords,
+                            stock:childStock
+                          }
+                        },
+                        success(res){
+                          stock[sub_material._id].left = stock[sub_material._id].left - mainAmount;
+                          wx.cloud.callFunction({
+                            name:'update',
+                            data:{
+                              collectionName:'warehouses',
+                              docid:rootWarehouse._id,
+                              data:{
+                                stock:stock
+                              }
+                            }
+                          });
+                        }
+
+                      });
+                      console.log(inANDoutRecords);
+                    }
+                  });
+                }
+              }else{
+                console.log('hi');
+              }
+            }
+
+          });
         }
       }else{
         if(wayin == '盘盈进仓'){
@@ -573,15 +664,15 @@ Page({
             stock = res.result.data[0].stock;
             inANDoutRecords = res.result.data[0].inANDoutRecords;
             console.log(stock);
-            if(stock.hasOwnProperty(warehouse._id)){
+            if (stock.hasOwnProperty(sub_material._id)){
               console.log('已存在,相同物资');
               inANDoutRecords.push(inRecord);
-              stock[warehouse._id].left = Number(stock[warehouse._id].left)+Number(inRecord.mainAmount);
+              stock[sub_material._id].left = Number(stock[sub_material._id].left)+Number(inRecord.mainAmount);
             }else{
               console.log('新物资');
               inANDoutRecords.push(inRecord);
-              stock[warehouse._id] = {};
-              stock[warehouse._id].left = inRecord.mainAmount;
+              stock[sub_material._id] = {};
+              stock[sub_material._id].left = inRecord.mainAmount;
             }
             console.log(stock, inANDoutRecords);
             wx.cloud.callFunction({
@@ -604,13 +695,12 @@ Page({
           }
         });
       }
-
-
-
-
-      console.log(this.data.dataset);
       
     },
+    /**
+     * 
+     * 
+     * **/
     navigateBack:function(){
       console.log('hi');
       wx.navigateBack({

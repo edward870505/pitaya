@@ -67,7 +67,7 @@ Page({
         rangeKey:'units',
         range_key:'cn',
       },
-      {
+      /**{
         imgSrc: '/images/转换.png',
         text: '单价*',
         inputType: 'number',
@@ -87,7 +87,7 @@ Page({
         inputPlaceHolder: '',
         unitInput: true,
         unitInputType: 'totalRMBinput'
-      }
+      }**/
     ],
     pickerRange: {
 
@@ -137,8 +137,7 @@ Page({
           [
             'waysin',
             'sub_materials',
-            'units',
-            'exchangerates'
+            'units'
           ]
         );
       }
@@ -212,7 +211,6 @@ Page({
          case 'sub_materials':
          case 'units':
          case 'transfers':
-         case 'exchangerates':
           appInstance.updateDatabase(item,'reinit',page,'updatePickerRange');
          break;
        }
@@ -225,20 +223,40 @@ Page({
     * 
     **/
     updatePickerRange:function(key){
-      var page,keyIndex;
+      var page,keyIndex,stock,warehouse;
       page = this;
       keyIndex = 'pickerRange.' + key;
+      warehouse = this.data.warehouse;
       page.data.pickerRange[key] = [];
       switch(key){
         case 'sub_materials':
           if(this.data.warehouse.type == '一级仓'){
-
-            appInstance.dbData[key].forEach(function(item,index){
-              if(item.approval){
-                item.pickername = item.name +' / '+item.specification
-                page.data.pickerRange[key].push(item);
+            wx.cloud.callFunction({
+              name:'query',
+              data:{
+                collectionName:'warehouses',
+                keys:{
+                  _id:warehouse._id
+                }
+              },
+              success(res){
+                console.log(res);
+                stock = res.result.data[0].stock;
+                appInstance.dbData[key].forEach(function (item, index) {
+                  if (stock.hasOwnProperty(item._id)) {
+                    if (stock[item._id].left > 0) {
+                      item.pickername = item.name + ' / ' + item.specification + '(余' + stock[item._id].left+item.mainUnit+')'
+                      page.data.pickerRange[key].push(item);
+                    }
+                  }
+                });
+                page.setData({
+                  [keyIndex]: page.data.pickerRange[key]
+                });
               }
+
             });
+
   
           }else{
             console.log('非一级仓');
@@ -506,17 +524,13 @@ Page({
       exchangerate = this.data.dataset.exchangerate;
       mainUnit = this.data.dataset.mainUnit;
       subUnit = this.data.dataset.subUnit;
-      priceRMB = this.data.dataset.priceRMB;
-      priceVND = this.data.dataset.priceVND;
-      totalRMB = this.data.dataset.totalRMB;
-      totalVND = this.data.dataset.totalVND;
       transferAmount = this.data.dataset.transferAmount;
       mainAmount = this.data.dataset.mainAmount;
       subAmount = this.data.dataset.subAmount;
 
   
 
-      if(!(time&&wayin&&sub_material&&transfer&&exchangerate&&mainUnit&&subUnit&&priceRMB&&priceVND&&totalRMB&&totalVND&&transferAmount)){
+      if(!(time&&wayin&&sub_material&&transfer&&mainUnit&&subUnit&&transferAmount)){
         wx.showToast({
           title: '带*号为必填项',
           icon:'none'
@@ -531,10 +545,6 @@ Page({
       inRecord.exchangerate = exchangerate;
       inRecord.mainUnit = mainUnit;
       inRecord.subUnit = subUnit;
-      inRecord.priceRMB = priceRMB;
-      inRecord.priceVND = priceVND;
-      inRecord.totalRMB = totalRMB;
-      inRecord.totalVND = totalVND;
       inRecord.mainAmount = mainAmount;
       inRecord.subAmount = subAmount;
       inRecord.transferAmount = transferAmount;

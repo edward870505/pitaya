@@ -137,50 +137,34 @@ Page({
   /**
    * 
    * **/
-  onWarehousePickerValueChanged:function(e){
-
-    var operationId,childrenId,children,page,url,data;
-
+  onWarehousePickerValueChanged: function (e) {
+    console.log(e);
+    var fatherIndex,childrenIndex,operationId,childrenId,warehouseId,data,url;
     operationId = e.detail.value;
-    childrenId = e.currentTarget.dataset.id;
-    page = this;
-
-
-    this.data.dataset.forEach(function(item,index){
-      if(item._id == childrenId){
-        children = page.data.dataset[index];
-        return;
-      }
-    });
-
+    fatherIndex = e.currentTarget.dataset.fatherIndex;
+    childrenIndex = e.currentTarget.dataset.childrenIndex;
     
-    data = JSON.stringify(children);
-
-    switch (operationId){
+    operationId = e.detail.value;
+    warehouseId = e.currentTarget.dataset.id;
+    data = warehouseId;
+    switch (operationId) {
 
       case '0':
-        url = '/pages/warehouse/query/query?data='+data;
-      break;
-        
+
+        break;
+
       case '1':
-        url = '/pages/warehouse/alterin/alterin?data='+data;
-      break;
-      
-     // case '2':
-        //url = '/pages/warehouse/alterout/alterout?name=' + name;
-     // break;
-
-     // case '3':
+        url = '/pages/warehouse/alterin/alterin?data=' + data;
+        break;
 
 
-     // break;
+      case '2':
+        url = '/pages/warehouse/alterout/alterout?data=' + data;
+        break;
     }
-
     wx.navigateTo({
       url: url
     });
-
-
   },
   /**
    * 

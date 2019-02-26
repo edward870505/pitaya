@@ -250,7 +250,7 @@
         <block wx:if='{{itemName==="warehouse"}}'>
           <view class='scrollview_container'>
             <scroll-view scroll-x>
-              <picker wx:for='{{children}}' wx:for-index='idx' wx:for-item='children' data-fatherindex='{{index}}' data-fatherid='{{fatherid}}' data-id='{{children._id}}' data-index='{{idx}}' class='scroll-section' range="{{['库存查询','进仓','出仓','删除仓库']}}" bindchange='onWarehousePickerValueChanged'>
+              <picker wx:for='{{children}}' wx:for-index='idx' wx:for-item='children' data-id='{{children._id}}' data-fatherindex='{{index}}' data-childrenindex='{{idx}}' class='scroll-section' range="{{['库存查询','进仓','出仓','删除仓库']}}" bindchange='onWarehousePickerValueChanged'>
                   <view>
                     <image src='{{childrenWarehouseImg}}'></image>
                     <text>{{children.name}}</text>

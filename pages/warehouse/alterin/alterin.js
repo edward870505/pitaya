@@ -34,11 +34,6 @@ Page({
       }
     });
 
-
-
-
-    console.log(warehouse);
-
   },
 
   /**

@@ -276,6 +276,7 @@ Page({
                 });
                 stock = page.data.rootWarehouse.stock;
                 appInstance.dbData[key].forEach(function(item,index){
+                  console.log(item);
                   if(stock.hasOwnProperty(item._id)){
                     if(stock[item._id].left>0){
                       item.pickername = item.name + ' / ' + item.specification
@@ -283,16 +284,23 @@ Page({
                     }
                   }
                 });
+                page.setData({
+                  [keyIndex]: page.data.pickerRange[key]
+                });
 
               }
             });
           }
+
         break;
         case 'units':
           appInstance.dbData[key].forEach(function(item,index){
             if(item.approval){
               page.data.pickerRange[key].push(item);
             }
+          });
+          page.setData({
+            [keyIndex]: page.data.pickerRange[key]
           });
         break;
         case 'transfers':
@@ -305,6 +313,9 @@ Page({
               }
             }
           });
+          page.setData({
+            [keyIndex]: page.data.pickerRange[key]
+          });
         break;
         case 'exchangerates':
           appInstance.dbData[key].forEach(function(item,index){
@@ -313,11 +324,12 @@ Page({
               page.data.pickerRange[key].push(item);
             }
           });
+          page.setData({
+            [keyIndex]: page.data.pickerRange[key]
+          });
         break;
       }
-      page.setData({
-        [keyIndex]: page.data.pickerRange[key]
-      });
+
     },
   /**
    * 
@@ -552,7 +564,19 @@ Page({
       
       if(wayin=='使用出仓'){
         if(warehouse.type != '一级仓'){
-          console.log(rootWarehouse);
+          wx.cloud.callFunction({
+            name:'query',
+            data:{
+              collectionName:'warehouses',
+              keys:{
+                _id:rootWarehouse._id
+              }
+            },
+            success(res) {
+              console.log(res);
+            }
+
+          });
         }
       }else{
         if (wayin == '盘亏出仓') {
@@ -561,6 +585,7 @@ Page({
           inRecord.totalRMB = 0;
           inRecord.totalVND = 0;
         }
+
         wx.cloud.callFunction({
           name:'query',
           data:{
@@ -573,11 +598,11 @@ Page({
             stock = res.result.data[0].stock;
             inANDoutRecords = res.result.data[0].inANDoutRecords;
             console.log(stock);
-            if(stock.hasOwnProperty(warehouse._id)){
+            if(stock.hasOwnProperty(sub_material._id)){
               console.log('已存在,相同物资');
               inANDoutRecords.push(inRecord);
-              if (Number(stock[warehouse._id].left) >= Number(inRecord.mainAmount)){
-                stock[warehouse._id].left = Number(stock[warehouse._id].left) - Number(inRecord.mainAmount);
+              if (Number(stock[sub_material._id].left) >= Number(inRecord.mainAmount)){
+                stock[sub_material._id].left = Number(stock[sub_material._id].left) - Number(inRecord.mainAmount);
               }else{
                 wx.showToast({
                   title: '物资库存不足',
@@ -586,6 +611,12 @@ Page({
                 return;
               }
               
+            }else{
+              wx.showToast({
+                title: '物资库存不足',
+                icon:'none'
+              });
+              return;
             }
             console.log(stock, inANDoutRecords);
             wx.cloud.callFunction({

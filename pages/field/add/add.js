@@ -318,6 +318,7 @@ Page({
     field.fieldAreaUnit = areaUnit;
     field.status = false;
     field.approval = true;
+    field.show = true;
     field.varieties = varieties;
 
     data.collectionName = 'fields';

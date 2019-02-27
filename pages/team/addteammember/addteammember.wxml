@@ -26,7 +26,7 @@
   <!--中部基础信息数据-->
   <view class='center_container'>
     <scroll-view scroll-y>
-      <template is='dataset_item' wx:for='{{dataset}}' data='{{approval:item.approval,index:index,imgSrc:itemImgSrc,status:item.status,name:item.name,serial:item.serial,teamnumer:item.teamnumber,itemName:itemName,memberImg:memberImg,age:item.age,sex:item.sex,desc:item.desc,text:filterData.text,initText:filterData.initText,switch:user.authorities.operation.basicinfo.team.switch,alter:user.authorities.operation.basicinfo.team.alter,delete:user.authorities.operation.basicinfo.team.delete,addTeamMember:user.authorities.operation.basicinfo.team.addTeamMember,memberid:item._id,teamMemberIds:teamMemberIds}}'>
+      <template is='dataset_item' wx:for='{{dataset}}' data='{{approval:item.approval,index:index,imgSrc:itemImgSrc,status:item.status,name:item.name,serial:item.serial,teamnumer:item.teamnumber,itemName:itemName,memberImg:memberImg,age:item.age,sex:item.sex,desc:item.desc,text:filterData.text,initText:filterData.initText,switch:user.authorities.operation.basicinfo.team.switch,alter:user.authorities.operation.basicinfo.team.alter,delete:user.authorities.operation.basicinfo.team.delete,addTeamMember:user.authorities.operation.basicinfo.team.addTeamMember,memberid:item._id,teamMemberIds:teamMemberIds,show:item.show}}'>
       </template>
     </scroll-view>
   </view>

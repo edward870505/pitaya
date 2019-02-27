@@ -117,7 +117,7 @@ Page({
     });
 
     /**初始化流程picker数据**/
-    appInstance.dbData.nodes.forEach(function (item, index) {
+    appInstance.dbData.producenodes.forEach(function (item, index) {
       if (item.approval && item.status) {
         page.data.pickerRange.nodes.push(item.name);
       }

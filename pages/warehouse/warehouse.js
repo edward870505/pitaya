@@ -150,8 +150,13 @@ Page({
     switch (operationId) {
 
       case '0':
+        wx.showToast({
+          title: '库存报表查询功能正在完善',
+          icon:'none'
+        });
+        return;
 
-        break;
+      break;
 
       case '1':
         url = '/pages/warehouse/alterin/alterin?data=' + data;
@@ -160,7 +165,15 @@ Page({
 
       case '2':
         url = '/pages/warehouse/alterout/alterout?data=' + data;
-        break;
+      break;
+
+      case '3':
+        wx.showToast({
+          title: '暂时不能删除仓库',
+          icon: 'none'
+        });
+        return;
+      break;
     }
     wx.navigateTo({
       url: url
@@ -179,21 +192,37 @@ Page({
     switch(operationId){
 
       case '0':
+        wx.showToast({
+          title: '库存报表查询功能正在完善',
+          icon: 'none'
+        });
+        return;
+
 
       break;
 
       case '1':
         url = '/pages/warehouse/alterin/alterin?data=' + data;
+        wx.navigateTo({
+          url: url
+        });
       break;
-     
 
       case '2':
         url = '/pages/warehouse/alterout/alterout?data=' + data;
+        wx.navigateTo({
+          url: url
+        });
+      break;
+
+      case '3':
+        wx.showToast({
+          title: '暂时不能删除仓库',
+          icon:'none'
+        });
       break;
     }
-    wx.navigateTo({
-      url: url
-    });
+
     console.log(warehouse);
   },
 

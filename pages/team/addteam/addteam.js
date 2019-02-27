@@ -238,6 +238,7 @@ Page({
     team.status = false;
     team.ref = false;
     team.approval = true;
+    team.show = true;
 
 
 

@@ -262,7 +262,8 @@ Page({
     grade.leaf = dataset.leaf.value;
     grade.status = false;
     grade.ref = false;
-    grade.approval = true;    
+    grade.approval = true;
+    grade.show = true;    
 
     data.collectionName = 'grades';
     data.data = grade;

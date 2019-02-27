@@ -569,11 +569,51 @@ Page({
             data:{
               collectionName:'warehouses',
               keys:{
-                _id:rootWarehouse._id
+                _id:warehouse._id
               }
             },
             success(res) {
               console.log(res);
+              stock = res.result.data[0].stock;
+              inRecord.priceRMB = 0;
+              inRecord.priceVND = 0;
+              inRecord.totalRMB = 0;
+              inRecord.totalVND = 0;
+              if(stock.hasOwnProperty(sub_material._id)){
+                console.log(stock[sub_material._id]);
+                console.log(mainAmount);
+                if(Number(stock[sub_material._id].left)>=Number(mainAmount)){
+                  stock[sub_material._id].left = Number(stock[sub_material._id].left) - Number(mainAmount);
+                  wx.cloud.callFunction({
+                    name:'update',
+                    data:{
+                      collectionName:'warehouses',
+                      docid:warehouse._id,
+                      data:{
+                        stock:stock
+                      }
+                    },
+                    success(res){
+                      wx.showToast({
+                        title: '使用出库成功',
+                        icon:'none'
+                      });
+                    }
+                  });
+                  console.log('扣减库存');
+                }else{
+                  wx.showToast({
+                    title: '库存不足',
+                    icon:'none'
+                  })
+                }
+              }else{
+                wx.showToast({
+                  title: '库存不足',
+                  icon:'none'
+                });
+                return;
+              }
             }
 
           });

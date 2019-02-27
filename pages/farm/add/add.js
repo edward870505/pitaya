@@ -51,8 +51,8 @@ Page({
     otherFormSections: [//定制表单区域配置
     ],
     pickerRange: {
-      placeOfOrigin: ['胡志明', '潘切'],
-      companies:['进赏']
+      placeOfOrigin: ['平顺省'],
+      companies:['越南总公司']
     },
     user: {//用户数据
     }
@@ -210,6 +210,7 @@ Page({
     farm.status = false;
     farm.ref = false;
     farm.approval = true;
+    farm.show = true;
 
     data.collectionName = 'farms';
     data.data = farm;

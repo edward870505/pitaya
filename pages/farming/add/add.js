@@ -207,6 +207,7 @@ Page({
     farming.status = false;
     farming.ref = false;
     farming.approval = true;
+    farming.show = true;
 
     data.collectionName = 'farmings';
     data.data = farming;

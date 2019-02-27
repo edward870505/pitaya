@@ -25,7 +25,7 @@
   <!--信息数据-->
   <view class='center_container'>
     <scroll-view scroll-y>
-      <template is='dataset_item' wx:for='{{dataset}}' data='{{approval:item.approval,initText:filterData.initText,text:filterData.text,itemName:itemName,id:item._id,area:item.area,areaUnit:item.fieldAreaUnit,farm:item.farm,serial:item.serial,imgSrc:itemImgSrc,varieties:item.varieties,index:index,status:item.status,switch:user.authorities.operation.basicinfo.field.switch,alter:user.authorities.operation.basicinfo.field.alter,delete:user.authorities.operation.basicinfo.field.delete}}'>
+      <template is='dataset_item' wx:for='{{dataset}}' data='{{approval:item.approval,initText:filterData.initText,text:filterData.text,itemName:itemName,id:item._id,area:item.area,areaUnit:item.fieldAreaUnit,farm:item.farm,serial:item.serial,imgSrc:itemImgSrc,varieties:item.varieties,index:index,status:item.status,switch:user.authorities.operation.basicinfo.field.switch,alter:user.authorities.operation.basicinfo.field.alter,delete:user.authorities.operation.basicinfo.field.delete,show:item.show}}'>
       </template>
     </scroll-view>
   </view>

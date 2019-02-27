@@ -25,7 +25,7 @@
   <!--中部基础信息数据-->
   <view class='center_container'>
     <scroll-view scroll-y>
-      <template is='dataset_item' wx:for='{{dataset}}' data='{{initText:filterData.initText,text:filterData.text,approval:item.approval,pickerText:filterRenderData.pickerText,id:item._id,authorities:user.authorities,index:index,imgSrc:itemImgSrc,status:item.status,itemName:itemName,placeOfOrigin:item.placeOfOrigin,name:item.name,address:item.address,company:item.company,switch:user.authorities.operation.basicinfo.farm.switch,alter:user.authorities.operation.basicinfo.farm.alter,delete:user.authorities.operation.basicinfo.farm.delete}}'>
+      <template is='dataset_item' wx:for='{{dataset}}' data='{{initText:filterData.initText,text:filterData.text,approval:item.approval,pickerText:filterRenderData.pickerText,id:item._id,authorities:user.authorities,index:index,imgSrc:itemImgSrc,status:item.status,itemName:itemName,placeOfOrigin:item.placeOfOrigin,name:item.name,address:item.address,company:item.company,switch:user.authorities.operation.basicinfo.farm.switch,alter:user.authorities.operation.basicinfo.farm.alter,delete:user.authorities.operation.basicinfo.farm.delete,show:item.show}}'>
       </template>
     </scroll-view>
   </view>

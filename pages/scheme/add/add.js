@@ -316,6 +316,7 @@ Page({
     scheme.desc =  desc;
     scheme.status = false;
     scheme.approval = true;
+    scheme.show = true;
     scheme.materials = materials;
 
     console.log(scheme);

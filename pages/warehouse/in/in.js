@@ -651,7 +651,8 @@ Page({
           inRecord.priceVND = 0;
           inRecord.totalRMB = 0;
           inRecord.totalVND = 0;
-        } 
+        }
+        //进仓 
         wx.cloud.callFunction({
           name:'query',
           data:{

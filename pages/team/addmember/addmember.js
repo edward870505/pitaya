@@ -222,6 +222,7 @@ Page({
     member.status = false;
     member.ref = false;
     member.approval = true;
+    member.show = true;
 
     data.collectionName = 'team_members';
     data.data = member;

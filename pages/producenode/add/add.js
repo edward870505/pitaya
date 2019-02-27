@@ -206,6 +206,7 @@ Page({
     producenode.status = false;
     producenode.ref = false;
     producenode.approval = true;
+    producenode.show = true;
 
     data.collectionName = 'producenodes';
     data.data = producenode;

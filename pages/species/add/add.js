@@ -217,6 +217,7 @@ Page({
     species.status = false;
     species.ref = false;
     species.approval = true;
+    species.show = true;
 
     data.collectionName = 'species';
     data.data = species;

@@ -251,7 +251,7 @@ Page({
         collectionName: 'teams',
         keys: {
           serial: team.serial,
-          field:team.field
+          farm:team.farm
         }
       },
       success(res) {

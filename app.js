@@ -150,7 +150,7 @@ App({
 
     app.dbData.speciesTypes = ['红肉', '白肉', '燕窝果'];
 
-    app.dbData.transferTypes = ['重量重量', '数量重量', '体积重量', '体积数量']
+    app.dbData.transferTypes = ['重量重量', '数量重量', '体积重量', '体积数量','数量数量','体积体积']
    },
   /**
    * 函数名:autoLogin

@@ -283,7 +283,7 @@ Page({
     page = this;
     keys = { 'farm':'farm','node':'node','finishedDatePlan':'finishedDatePlan'};
     if (!util.operation.form.addFormEmptyValueValidation(keys, page)) {
-      if(this.data.dataset.node.value=='摘果'){
+      if (this.data.dataset.node.value == '摘果' || this.data.dataset.node.value == '收果'){
         if (this.data.totalProduction.value == '' || this.data.totalProduction.pickerText == '请选择产量单位') {
           wx.showToast({
             title: '带*号为必填项',
@@ -293,7 +293,7 @@ Page({
         }
       }
 
-      if(this.data.dataset.node.value=='摘果'){
+      if (this.data.dataset.node.value == '摘果' || this.data.dataset.node.value == '收果'){
         this.otherFormSectionsValidation();
       }else{
         this.submitAlterForm();
@@ -385,7 +385,7 @@ Page({
     plan.finished = false;
     plan.approval = true;
 
-    if(plan.node == '摘果'){
+    if(plan.node == '摘果' || plan.node =='收果'){
       plan.totalProduction = page.data.totalProduction.value;
       plan.amountUnit = page.data.totalProduction.amountUnit;
       plan.predictions = dataset.predictions;
